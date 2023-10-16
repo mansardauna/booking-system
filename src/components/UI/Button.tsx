@@ -9,13 +9,13 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ variant, onClick, children, className }) => {
   const buttonClasses = variant === 'primary'
-    ? 'bg-primeColor text-white border border-gray-500 hover:bg-gray-800'
-    : 'bg-white text-black border border-gray-500 hover:bg-gray-100';
+    ? 'bg-primary border border-gray-500 hover:bg-gray-800'
+    : 'bg-transparent  border border-transparent hover:border-gray-600 hover:border ';
 
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${buttonClasses} ${className}`}
+      className={`p-2 ${buttonClasses} ${className}`}
     >
       {children}
     </button>

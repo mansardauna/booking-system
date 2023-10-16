@@ -18,8 +18,9 @@ color: var(--text-light);
 :root {
   --background-light: #fff;
   --text-light: #333;
-  --background-dark: #333;
+  --background-dark: #0d132d;
   --text-dark: #fff;
+  --sidebar-dark: #0d132d;
 }
  
 /* Dark mode styles */
@@ -27,7 +28,16 @@ color: var(--text-light);
   background: var(--background-dark);
   color: var(--text-dark);
 }
+.sidebar{
+  background: var(--sidebar-dark);
+  border-right: 1px solid rgb(68, 67, 67);
 
+}
+.nav{
+  border-bottom: 1px solid rgb(68, 67, 67);
+  background: var(--background-dark);
+
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

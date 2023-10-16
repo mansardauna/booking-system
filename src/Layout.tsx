@@ -23,12 +23,13 @@ function Layout() {
 
   return (
     <div className="flex">
-      <div className="md:w-1/4 border-r border-white shadow-md">
-      <Sidebar isDarkMode={isDarkMode} toggleDarkMode={handleToggleDarkMode} />
+      <div className={`md:w-1/5 shadow-xl border-none border-r z-50 fixed bg-primary  ${isDarkMode ? 'sidebar' : ''}`}>
+      <Sidebar toggleDarkMode={handleToggleDarkMode} />
         <MobileSidebar isDarkMode={isDarkMode} toggleDarkMode={handleToggleDarkMode} />
       </div>
-      <div className={` w-full block ${isDarkMode ? 'dark-mode' : ''}`}>
-        <Nav/>
+      <Nav isDark={isDarkMode}/>
+
+      <div className={` md:ml-[20%] md:mt-[5%] mt-[45%] w-full block ${isDarkMode ? 'dark-mode' : ''}`}>
         <ScrollRestoration />
         <Outlet />
       </div>

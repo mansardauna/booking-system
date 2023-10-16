@@ -5,14 +5,15 @@ import Search from '../../pages/Home/components/Nav/Search';
 import { NavList, Rate } from '../ItemMap.tsx/NavList';
 
 interface SidebarProps {
-  isDarkMode: boolean;
+  // isDarkMode: boolean;
   toggleDarkMode: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, toggleDarkMode }) => {
+const Sidebar: React.FC<SidebarProps> = ({  toggleDarkMode }) => {
   return (
     <>
-      <div className={`md:flex flex-col gap-5 hidden bg-primary bg-opacity-80 h-screen p-2 pr-0 relative justify-between pb-20 text-white ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div className={`md:flex flex-col 
+      gap-5 hidden  bg-opacity-80 h-screen p-2 pr-0 relative justify-between pb-20 text-white `}>
         <div className="mx-auto my-2 logo md:text-2xl text-xl font-semibold">Event Hall</div>
         <Search />
         <div className='mt-2'>

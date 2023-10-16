@@ -1,4 +1,4 @@
-import { HeartAdd } from 'iconsax-react';
+import { ArrowRight, HeartAdd, Star1 } from 'iconsax-react';
 import React from 'react';
 import { useCart } from '../../store/FavoriteContext';
 import Button from '../UI/Button';
@@ -16,13 +16,25 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   };
 
   return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>${product.price}</p>
-      <Button variant='primary' className=' rounded-md px-2 flex md:gap-2 gap-1 bg-primary border-none items-center text-sm' onClick={addToCart}>
-        <HeartAdd color='white' size={16} />
-        <div>Favourite</div>
-      </Button>
+    <div className='border rounded-2xl border-gray-200 '>
+      <img src={product.image} alt={product.name} className="h-40 w-80 rounded-2xl" />
+      <div className="flex items-center p-2 justify-between">
+      <div className=' text-xl font-semibold'>{product.name}</div>
+      <HeartAdd size={20} onClick={addToCart} className="cursor-pointer" />
+
+      <div className="flex items-center cursor-pointer gap-1">
+      <Star1 size={17} color={'gold'} />
+      <div className=' font-semibold'>{product.rate}</div>
+      </div>
+      </div>
+      <div className="flex items-center justify-between p-2">
+      <div><span className=' text-green-700 font-semibold'>NGN</span> {product.price} <span className=' text-gray-400 font-light text-sm'>/Day</span></div>
+      <Button onClick={addToCart} variant='secondary' className='flex rounded-md px-4 gap-2 items-center'>
+        <div className="text-sm">View</div>
+        <ArrowRight size={16}/>
+        </Button> 
+     
+    </div>
     </div>
   );
 };

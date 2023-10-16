@@ -16,20 +16,20 @@ const MobileSidebar: React.FC<SidebarProps> = ({isDarkMode, toggleDarkMode}) => 
   }
 
   return (
-    <div className='md:hidden block'>
+    <div className='md:hidden block w-full  fixed z-10'>
       {isSidebarOpen ? (
-        <div className=" absolute top-0 z-50 w-full left-2 flex items-center">
+        <div className=" top-0  w-full left-2 p-2 flex items-center">
           <HambergerMenu size={32} onClick={handleToggleSidebar} />
 
           <div className="mx-auto my-2 text-center w-9/12 logo md:text-2xl text-3xl font-semibold">Event Hall</div>
         </div>
       ) : (
-        <div className={`flex flex-col gap-5 bg-primary z-50 absolute w-2/4 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
+        <div className={`flex flex-col gap-5 relative bg-primary z-10  w-2/4 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
           
           <div className={`toggle md:hidden absolute right-2 top-2`} onClick={handleToggleSidebar}>
             <CloseSquare />
           </div>
-          <div className='mt-5'>
+          <div className='mt-10'>
             {NavList.map((item) => (
               <Link to={item.link} key={item.id}>
                 <div className='flex cursor-pointer p-3 items-center text-sm md:text-xl hover:text-gray-300 hover:border-r-4 border-white gap-3'>
