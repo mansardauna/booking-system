@@ -2,6 +2,8 @@ import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Layout from './Layout';
+import MapWithLocationTracker from './pages/Account/Location';
+import Profile from './pages/Account/Profile';
 import SignUp from './pages/Account/SignUp';
 import SingIn from './pages/Account/SingIn';
 import BookingForm from './pages/Booking/components/BookingForm';
@@ -25,6 +27,8 @@ const router = createBrowserRouter(
         <Route path="/favourite" element={<Favourite/>} />
         <Route path='/Notification' element={<Notification/>} />
         <Route path='/fav' element={<FavouriteList />}/>
+        <Route path="/user" element={<Profile/>} />
+        <Route path="location" element={<MapWithLocationTracker/>} />
         
         </Route>
         </Route>

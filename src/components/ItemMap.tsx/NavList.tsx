@@ -15,18 +15,6 @@ export const NavList = [
     link: '/user'
   },
   {
-    id:4,
-    title:"Location",
-    icon: <Location size={17}/>,
-    link: '/location'
-  },
-  {
-    id:3,
-    title:"Notification",
-    icon: <Notification size={17}/>,
-    link:"/notification"
-  },
-  {
     title:"Settings",
     icon: <Setting size={17}/>,
     link:"settings"

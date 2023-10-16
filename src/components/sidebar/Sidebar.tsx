@@ -1,6 +1,7 @@
 import { CloseSquare, HambergerMenu, Moon, Sun1 } from 'iconsax-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../../pages/Home/components/Nav/Search';
 import { NavList, Rate } from '../ItemMap.tsx/NavList';
 
 interface SidebarProps {
@@ -13,7 +14,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode, toggleDarkMode }) => {
     <>
       <div className={`md:flex flex-col gap-5 hidden bg-primary bg-opacity-80 h-screen p-2 pr-0 relative justify-between pb-20 text-white ${isDarkMode ? 'dark-mode' : ''}`}>
         <div className="mx-auto my-2 logo md:text-2xl text-xl font-semibold">Event Hall</div>
-        <div className='mt-5'>
+        <Search />
+        <div className='mt-2'>
           {NavList.map((item) => (
             <Link to={item.link} key={item.id}>
               <div className='flex cursor-pointer p-3 items-center text-sm md:text-xl hover:text-gray-300 hover-border-r-4 border-white gap-3'>

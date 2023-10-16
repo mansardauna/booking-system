@@ -38,7 +38,7 @@ const CurrentLocation: React.FC = () => {
   };
 
   return (
-    <div className='flex gap-2 items-center text-sm'>
+    <div className='flex justify-center gap-2 items-center text-sm'>
       <Location size={17}/>
       {error ? (
         <p>Error: {error}</p>
