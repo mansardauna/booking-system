@@ -28,7 +28,7 @@ const Language: React.FC = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="absolute top-6 left-0 z-50 bg-black w-32 text-[#767676] h-auto p-4 pb-6"
+          className="absolute md:top-6 bottom-5 left-0 z-50 bg-black w-32 text-[#767676] h-auto p-4 pb-6"
         >
           <li
             onClick={() => changeLanguage('en')}
