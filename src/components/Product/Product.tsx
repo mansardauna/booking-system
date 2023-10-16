@@ -17,7 +17,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <div className='border rounded-2xl border-gray-200 '>
-      <img src={product.image} alt={product.name} className="h-40 w-80 rounded-2xl" />
+      <img src={product.image} alt={product.name} className="md:h-40 md:w-80 w-full h-52 rounded-2xl m-auto" />
       <div className="flex items-center p-2 justify-between">
       <div className=' text-xl font-semibold'>{product.name}</div>
       <HeartAdd size={20} onClick={addToCart} className="cursor-pointer" />
