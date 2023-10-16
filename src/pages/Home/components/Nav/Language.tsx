@@ -21,7 +21,7 @@ const Language: React.FC = () => {
     <div className='relative'>
       <div onClick={() => toggleDropdown('lang')} className="flex justify-center items-center gap-2 relative">
       <LanguageSquare/>
-      <div className=' '>Language</div>
+      <div className=' hidden md:block '>Language</div>
       </div>
       {showDropdown === 'lang' && (
         <motion.ul
