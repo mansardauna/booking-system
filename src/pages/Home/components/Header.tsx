@@ -26,7 +26,7 @@ function Header() {
 
   return (
     <div className='flex flex-col'>
-      <div className="flex justify-between md:w-7/12 w-10/12 m-auto md:p-4 mt-5 cursor-pointer md:text-lg text-sm font-light text-slate-400">
+      <div className="flex justify-between md:w-7/12 w-10/12 m-auto md:p-4 mt-5 cursor-pointer text-lg  font-light text-slate-400">
         {filter.map((item: any) => (
           <div
             key={item.id}

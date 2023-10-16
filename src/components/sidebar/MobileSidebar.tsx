@@ -24,7 +24,7 @@ const MobileSidebar: React.FC<SidebarProps> = ({isDarkMode, toggleDarkMode}) => 
           <div className="mx-auto my-2 text-center w-9/12 logo md:text-2xl text-xl font-semibold">Event Hall</div>
         </div>
       ) : (
-        <div className={`flex flex-col gap-5 bg-primary z-50 absolute md:w-1/5 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
+        <div className={`flex flex-col gap-5 bg-primary z-50 absolute w-2/4 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
           
           <div className={`toggle md:hidden absolute right-2 top-2`} onClick={handleToggleSidebar}>
             <CloseSquare />
