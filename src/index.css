@@ -11,6 +11,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+background: var(--background-light);
+color: var(--text-light);
+}
+
+:root {
+  --background-light: #fff;
+  --text-light: #333;
+  --background-dark: #333;
+  --text-dark: #fff;
+}
+ 
+/* Dark mode styles */
+.dark-mode {
+  background: var(--background-dark);
+  color: var(--text-dark);
 }
 
 code {

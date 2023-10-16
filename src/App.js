@@ -8,6 +8,8 @@ import BookingForm from './pages/Booking/components/BookingForm';
 import Favourite from './pages/Favourite/Favourite';
 import Home from './pages/Home/Home';
 import Notification from './pages/notification/components/Notification';
+import { CartProvider, FavProvider } from './store/FavoriteContext';
+import FavouriteList from './store/FavouriteList';
 
 
 const router = createBrowserRouter(
@@ -22,6 +24,7 @@ const router = createBrowserRouter(
         <Route path="/signin" element={<SingIn/>} />
         <Route path="/favourite" element={<Favourite/>} />
         <Route path='/Notification' element={<Notification/>} />
+        <Route path='/fav' element={<FavouriteList />}/>
         
         </Route>
         </Route>
@@ -30,7 +33,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <div>
+      <CartProvider>
    <RouterProvider router={router} />
+   </CartProvider>
     </div>
   )
 }

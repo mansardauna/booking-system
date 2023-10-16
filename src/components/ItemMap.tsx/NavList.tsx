@@ -5,30 +5,30 @@ export const NavList = [
   {
     id:1,
     title:"Home",
-    icon: <Home/>,
+    icon: <Home size={17}/>,
     link: '/'
   },
   {
     id:2,
     title:"Profile",
-    icon: <User/>,
+    icon: <User size={17}/>,
     link: '/user'
   },
   {
     id:4,
     title:"Location",
-    icon: <Location/>,
+    icon: <Location size={17}/>,
     link: '/location'
   },
   {
     id:3,
     title:"Notification",
-    icon: <Notification/>,
+    icon: <Notification size={17}/>,
     link:"/notification"
   },
   {
     title:"Settings",
-    icon: <Setting/>,
+    icon: <Setting size={17}/>,
     link:"settings"
   }
   

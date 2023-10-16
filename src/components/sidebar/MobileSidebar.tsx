@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { NavList, Rate } from '../ItemMap.tsx/NavList';
 
 interface SidebarProps {
-  
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
 }
 
-const MobileSidebar: React.FC<SidebarProps> = () => {
+const MobileSidebar: React.FC<SidebarProps> = ({isDarkMode, toggleDarkMode}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   function handleToggleSidebar() {
@@ -17,12 +18,14 @@ const MobileSidebar: React.FC<SidebarProps> = () => {
   return (
     <div className='md:hidden block'>
       {isSidebarOpen ? (
-        <div className="absolute top-5 left-4">
+        <div className=" absolute top-0 z-50 w-full left-2 flex items-center">
           <HambergerMenu size="20" onClick={handleToggleSidebar} />
+
+          <div className="mx-auto my-2 text-center w-9/12 logo md:text-2xl text-xl font-semibold">Event Hall</div>
         </div>
       ) : (
-        <div className={`flex flex-col gap-5 bg-primary bg-opacity-80 md:w-1/5 h-screen p-2 pr-0 relative justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
-          <div className="mx-auto my-2 logo md:text-2xl text-xl font-semibold">Event Hall</div>
+        <div className={`flex flex-col gap-5 bg-primary z-50 absolute md:w-1/5 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
+          
           <div className={`toggle md:hidden absolute right-2 top-2`} onClick={handleToggleSidebar}>
             <CloseSquare />
           </div>
@@ -49,10 +52,10 @@ const MobileSidebar: React.FC<SidebarProps> = () => {
           <div>
             <div className="flex justify-between p-4 ">
               <div className="p-2 flex shadow-md cursor-pointer rounded-md gap-2 items-center">
-                <Sun1 size={20} />
+                <Sun1 size={20}onClick={toggleDarkMode} />
               </div>
               <div className="p-2 flex shadow-md cursor-pointer rounded-md gap-2 items-center">
-                <Moon size={20} />
+                <Moon size={20} onClick={toggleDarkMode} />
               </div>
             </div>
           </div>
