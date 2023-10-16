@@ -19,9 +19,9 @@ const MobileSidebar: React.FC<SidebarProps> = ({isDarkMode, toggleDarkMode}) => 
     <div className='md:hidden block'>
       {isSidebarOpen ? (
         <div className=" absolute top-0 z-50 w-full left-2 flex items-center">
-          <HambergerMenu size="20" onClick={handleToggleSidebar} />
+          <HambergerMenu size={32} onClick={handleToggleSidebar} />
 
-          <div className="mx-auto my-2 text-center w-9/12 logo md:text-2xl text-xl font-semibold">Event Hall</div>
+          <div className="mx-auto my-2 text-center w-9/12 logo md:text-2xl text-3xl font-semibold">Event Hall</div>
         </div>
       ) : (
         <div className={`flex flex-col gap-5 bg-primary z-50 absolute w-2/4 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>
