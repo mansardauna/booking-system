@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Layout from './Layout';
@@ -9,39 +9,42 @@ import SingIn from './pages/Account/SingIn';
 import BookingForm from './pages/Booking/components/BookingForm';
 import Favourite from './pages/Favourite/Favourite';
 import Home from './pages/Home/Home';
+import HotelRoom from './pages/notification/components/HotelRoom';
 import Notification from './pages/notification/components/Notification';
-import { CartProvider, FavProvider } from './store/FavoriteContext';
+import Detail from './pages/productDetails/Detail';
+import ProductDetail from './pages/productDetails/ProductDetails';
+import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContext';
 import FavouriteList from './store/FavouriteList';
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-
     <Route>
       <Route path="/" element={<Layout />}>
-       
-        <Route index element={<Home />}></Route>
-        <Route path='/booking' element={<BookingForm/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/signin" element={<SingIn/>} />
-        <Route path="/favourite" element={<Favourite/>} />
-        <Route path='/Notification' element={<Notification/>} />
-        <Route path='/fav' element={<FavouriteList />}/>
-        <Route path="/user" element={<Profile/>} />
-        <Route path="location" element={<MapWithLocationTracker/>} />
-        
-        </Route>
-        </Route>
-        ))
+        <Route index element={<Home />} />
+        <Route path="/booking" element={<BookingForm />} />
+        <Route path="/product/:_id" element={<Detail />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/hotel" element={<HotelRoom />} />
+
+        <Route path="/signin" element={<SingIn />} />
+        <Route path="/favourite" element={<Favourite />} />
+        <Route path="/Notification" element={<Notification />} />
+        <Route path="/fav" element={<FavouriteList />} />
+        <Route path="/user" element={<Profile />} />
+        <Route path="/location" element={<MapWithLocationTracker />} />
+      </Route>
+    </Route>
+  )
+);
 
 function App() {
   return (
     <div>
-      <CartProvider>
-   <RouterProvider router={router} />
-   </CartProvider>
+      <StoreProvider>
+        <RouterProvider router={router} />
+      </StoreProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

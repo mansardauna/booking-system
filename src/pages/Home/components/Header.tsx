@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Product from '../../../components/Product/Product';
+import ProductDetail from '../../productDetails/ProductDetails';
 import { products } from './mockApi';
 
 function Header() {
+  const [showDetail, setShowDetail] = useState(false);
   const filter = [
     {
       id: 1,
@@ -26,7 +28,7 @@ function Header() {
 
   return (
     <div className='flex flex-col'>
-      <div className="flex justify-between md:w-6/12 w-10/12 m-auto md:p-4 mt-2 md:mt-0 cursor-pointer text-lg  text-slate-400">
+      <div className="flex justify-between md:w-6/12 w-10/12 m-auto md:p-4 mt-2 md:mt-0 cursor-pointer text-lg text-slate-400">
         {filter.map((item: any) => (
           <div
             key={item.id}
@@ -39,10 +41,15 @@ function Header() {
           </div>
         ))}
       </div>
-      <div className='grid md:grid-cols-3 grid-cols-1 gap-5 md:w-11/12 w-10/12 p-2 m-auto'>
-        {products.map((product: any) => (
-          <Product key={product.id} product={product} />
-        ))}
+      <div className="flex">
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-5 md:w-11/12 w-10/12 p-2 m-auto'>
+          {products.map((product: any) => (
+            <Product key={product.id} productInfo={product} show={showDetail} />
+          ))}
+        </div>
+        <div>
+         
+        </div>
       </div>
     </div>
   );
