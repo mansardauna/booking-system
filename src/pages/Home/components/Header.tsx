@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Product from '../../../components/Product/Product';
-import ProductDetail from '../../productDetails/ProductDetails';
-import { products } from './mockApi';
 
 function Header() {
   const [showDetail, setShowDetail] = useState(false);
@@ -21,10 +19,28 @@ function Header() {
   ];
 
   const [activeFilter, setActiveFilter] = useState<number | null>(null);
+  const [products, setProducts] = useState([]); // State to store product data
 
   const handleFilterClick = (id: number) => {
     setActiveFilter(id);
   };
+
+  useEffect(() => {
+    // Simulate fetching product data from a mock API
+    // You can replace this with actual API calls
+    const fetchProducts = async () => {
+      try {
+        // Mock API endpoint or actual API endpoint
+        const response = await fetch('http://localhost:3001/products'); // Replace with your API endpoint
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className='flex flex-col'>

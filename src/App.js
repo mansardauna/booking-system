@@ -11,7 +11,7 @@ import Favourite from './pages/Favourite/Favourite';
 import Home from './pages/Home/Home';
 import HotelRoom from './pages/notification/components/HotelRoom';
 import Notification from './pages/notification/components/Notification';
-import Detail from './pages/productDetails/Detail';
+import Detail from './pages/productDetails/components/Detail';
 import ProductDetail from './pages/productDetails/ProductDetails';
 import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContext';
 import FavouriteList from './store/FavouriteList';

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, HeartAdd, Star1 } from 'iconsax-react';
+import { ArrowRight, HeartAdd, Location, Star1 } from 'iconsax-react';
 
 import Button from '../UI/Button';
 import ProductDetail from '../../pages/productDetails/ProductDetails';
 import { useNavigate } from 'react-router-dom';
+import RoomGallery from './RoomGallery';
 
 type ProductProps = {
   productInfo: any;
@@ -28,17 +29,28 @@ const Product: React.FC<ProductProps> = ({ productInfo, show }) => {
       },
     }); 
   };
+  const media = [
+    { type: 'image', url: productInfo.images[0], alt: productInfo.name },
+    { type: 'video', url: productInfo.videos[0], alt: productInfo.name },
+  ];
 
   return (
     <div className="border rounded-2xl border-gray-200">
-      <img src={productInfo.image} alt={productInfo.name} className="md:h-40 md:w-80 w-full h-52 rounded-2xl m-auto" />
+      <RoomGallery media={media}/>
       <div className="flex items-center p-2 justify-between">
         <div className="text-xl font-semibold">{productInfo.name}</div>
         <HeartAdd size={20}className="cursor-pointer" />
       </div>
+      <div className="flex items-center p-2 justify-between">
       <div className="flex items-center cursor-pointer gap-1">
         <Star1 size={17} color={'gold'} />
         <div className="font-semibold">{productInfo.rate}</div>
+        <div className="star">star</div>
+      </div>
+      <div className="flex items-center gap-1">
+        <Location size={14} color='red' /> 
+        <div className="location">{productInfo.location}</div>
+      </div>
       </div>
       <div className="flex items-center justify-between p-2">
         <div>
