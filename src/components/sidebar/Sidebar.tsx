@@ -1,21 +1,31 @@
 import { CloseSquare, HambergerMenu, Moon, Sun1 } from 'iconsax-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProductSearch from '../../pages/Home/components/Nav/Search';
 import Search from '../../pages/Home/components/Nav/Search';
 import { NavList, Rate } from '../ItemMap.tsx/NavList';
-
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  location: string;
+  images: any
+  // Add other product properties here
+}
 interface SidebarProps {
   // isDarkMode: boolean;
   toggleDarkMode: () => void;
+  products: Product[]; // Pass the product data to the Nav component
+
 }
 
-const Sidebar: React.FC<SidebarProps> = ({  toggleDarkMode }) => {
+const Sidebar: React.FC<SidebarProps> = ({  toggleDarkMode, products }) => {
   return (
     <>
       <div className={`md:flex flex-col 
       gap-5 hidden  bg-opacity-80 h-screen p-2 pr-0 relative justify-between pb-20 text-white `}>
         <div className="mx-auto my-2 logo md:text-2xl text-xl font-semibold">Event Hall</div>
-        <Search />
+        <ProductSearch products={products}/>
         <div className='mt-2'>
           {NavList.map((item) => (
             <Link to={item.link} key={item.id}>

@@ -27,11 +27,11 @@ const router = createBrowserRouter(
         <Route path="/hotel" element={<HotelRoom />} />
 
         <Route path="/signin" element={<SingIn />} />
-        <Route path="/favourite" element={<Favourite />} />
         <Route path="/Notification" element={<Notification />} />
         <Route path="/fav" element={<FavouriteList />} />
         <Route path="/user" element={<Profile />} />
         <Route path="/location" element={<MapWithLocationTracker />} />
+        <Route path='/favourite' element={<FavouriteList/>} />
       </Route>
     </Route>
   )

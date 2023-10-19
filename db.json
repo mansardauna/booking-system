@@ -1,4 +1,19 @@
 {
+  "categories": [
+  
+    {
+      "id": 1,
+      "title": "Near me"
+    },
+    {
+      "id": 2,
+      "title": "Recommended"
+    },
+    {
+      "id": 3,
+      "title": "Popular"
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -8,6 +23,7 @@
       "images": ["/image/hall1.jpeg", "/image/hall2.jpeg", "/image/hall3.jpeg"],
       "videos": ["/video/video1.mp4", "/video/video2.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -32,6 +48,7 @@
       "images": ["/image/hall4.jpeg", "/image/hall5.jpeg"],
       "videos": ["/video/video3.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -53,9 +70,10 @@
       "name": "Arena",
       "price": 30000,
       "rate": "3",
-      "images": ["/image/hall6.jpeg"],
+      "images": ["/image/hall6.jpg"],
       "videos": ["/video/video4.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -80,6 +98,7 @@
       "images": ["/image/hall7.jpeg"],
       "videos": ["/video/video5.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -101,9 +120,10 @@
       "name": "Product 1",
       "price": 100000,
       "rate": "5",
-      "images": ["/image/hall8.jpeg"],
+      "images": ["/image/hall8.jpg"],
       "videos": ["/video/video6.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -125,9 +145,60 @@
       "name": "Product 2",
       "price": 250000,
       "rate": "4",
-      "images": ["/image/hall9.jpeg"],
+      "images": ["/image/hall9.jpg"],
       "videos": ["/video/video7.mp4"],
       "location": "Asadam, ilorin",
+      "category": "Recommended",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-16",
+          "title": "Free Internet"
+        },
+        {
+          "icon": "icon-17",
+          "title": "Kid-Friendly"
+        },
+        {
+          "icon": "icon-18",
+          "title": "Poolside Bar"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Product 2",
+      "price": 250000,
+      "rate": "4",
+      "images": ["/image/hall6.jpg"],
+      "videos": ["/video/video7.mp4"],
+      "location": "Asadam, ilorin",
+      "category": "Recommended",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-16",
+          "title": "Free Internet"
+        },
+        {
+          "icon": "icon-17",
+          "title": "Kid-Friendly"
+        },
+        {
+          "icon": "icon-18",
+          "title": "Poolside Bar"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Product 2",
+      "price": 250000,
+      "rate": "4",
+      "images": ["/image/hall2.jpeg"],
+      "videos": ["/video/video7.mp4"],
+      "location": "Asadam, ilorin",
+      "category": "Recommended",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {

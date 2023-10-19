@@ -6,7 +6,7 @@ import { BookingButton } from "./components/BookingButton";
 import { BookedDatesList } from "./components/BookingList";
 import { DateRangePicker } from "./components/DateRange";
 import Display from "./components/Display";
-import { useStoreDispatch } from "../../store/FavoriteContext";
+import { ActionTypes, useStoreDispatch } from "../../store/FavoriteContext";
 
 interface InfoProps {
   productInfo: any;
@@ -32,11 +32,14 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
 
   const toggleWatchlist = () => {
     setIsInWatchlist(!isInWatchlist);
+
     if (!isInWatchlist) {
-      // Dispatch the action to add the room to the watchlist
-      storeDispatch({ type: "ADD_TO_WATCHLIST", payload: productInfo });
-    
-  };
+      // Dispatch the action to add the item to the watchlist
+      storeDispatch({ type: ActionTypes.ADD_TO_WATCHLIST, payload: productInfo });
+    } else {
+      // Dispatch the action to remove the item from the watchlist
+      storeDispatch({ type: ActionTypes.REMOVE_FROM_WATCHLIST, payload: productInfo._id });
+    }
   };
 
   const handleBookRoom = () => {

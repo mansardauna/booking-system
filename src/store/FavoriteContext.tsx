@@ -10,7 +10,7 @@ interface Product {
 
 interface OrebiState {
   products: Product[];
-  watchlist: Product[];
+  watchlist: Product[]; // 
   orders: Product[];
   orderHistory: Product[];
 }
@@ -21,8 +21,8 @@ type StoreAction =
   | { type: "DECREASE_QUANTITY"; payload: { _id: number } }
   | { type: "DELETE_ITEM"; payload: number }
   | { type: "RESET_CART" }
-  | { type: "ADD_TO_WATCHLIST"; payload: Product }
-  | { type: "REMOVE_FROM_WATCHLIST"; payload: number }
+  | { type: "ADD_TO_WATCHLIST"; payload: Product } // Add action for adding to the watchlist
+  | { type: "REMOVE_FROM_WATCHLIST"; payload: number } // Add action for removing from the watchlist
   | { type: "ADD_ORDER"; payload: Product }
   | { type: "REMOVE_ORDER"; payload: number }
   | { type: "INCREASE_ORDER_QUANTITY"; payload: { _id: number } }
@@ -34,7 +34,7 @@ type StoreAction =
 
 const initialState: OrebiState = {
   products: [],
-  watchlist: [],
+  watchlist: [], // Initialize the watchlist as an empty array
   orders: [],
   orderHistory: [],
 };
@@ -64,27 +64,20 @@ export const ActionTypes = {
 
 const storeReducer: React.Reducer<OrebiState, StoreAction> = (state, action) => {
   switch (action.type) {
-    case ActionTypes.ADD_TO_CART: {
-      const itemIndex = state.products.findIndex(
-        (item) => item._id === action.payload._id
-      );
+    case ActionTypes.ADD_TO_WATCHLIST: {
+      const itemIndex = state.watchlist.findIndex((item) => item._id === action.payload._id);
 
       if (itemIndex !== -1) {
-        state.products[itemIndex].quantity += 1;
+        state.watchlist[itemIndex].quantity += 1;
       } else {
-        state.products.push({ ...action.payload, quantity: 1 });
+        state.watchlist.push({ ...action.payload, quantity: 1 });
       }
       return { ...state };
     }
 
-    case ActionTypes.INCREASE_QUANTITY: {
-      const item = state.products.find(
-        (item) => item._id === action.payload._id
-      );
-      if (item) {
-        item.quantity += 1;
-      }
-      return { ...state };
+    case ActionTypes.REMOVE_FROM_WATCHLIST: {
+      const updatedWatchlist = state.watchlist.filter((item) => item._id !== action.payload);
+      return { ...state, watchlist: updatedWatchlist };
     }
 
     // Add cases for other actions
@@ -94,7 +87,7 @@ const storeReducer: React.Reducer<OrebiState, StoreAction> = (state, action) => 
   }
 };
 
-interface StoreProviderProps{
+interface StoreProviderProps {
   children: ReactNode;
 }
 
@@ -123,3 +116,4 @@ export const useStoreDispatch = () => {
   }
   return context.dispatch;
 };
+
