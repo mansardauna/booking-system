@@ -33,6 +33,9 @@ const Product: React.FC<ProductProps> = ({ productInfo, show }) => {
     { type: 'image', url: productInfo.images[0], alt: productInfo.name },
     { type: 'video', url: productInfo.videos[0], alt: productInfo.name },
   ];
+  if (!productInfo) {
+    return <div>Product information is missing.</div>;
+  }
 
   return (
     <div className="border rounded-2xl border-gray-200">

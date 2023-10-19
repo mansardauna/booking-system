@@ -1,0 +1,176 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "The Royals",
+      "price": 10000,
+      "rate": "4",
+      "images": [
+        "/image/hall1.jpeg",
+        "/image/hall2.jpeg",
+        "/image/hall3.jpeg"
+      ],
+      "videos": [
+        "/video/video1.mp4",
+        "/video/video2.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-1",
+          "title": "Free Wi-Fi"
+        },
+        {
+          "icon": "icon-2",
+          "title": "Swimming Pool"
+        },
+        {
+          "icon": "icon-3",
+          "title": "Restaurant"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "The Rock",
+      "price": 150000,
+      "rate": "6",
+      "images": [
+        "/image/hall4.jpeg",
+        "/image/hall5.jpeg"
+      ],
+      "videos": [
+        "/video/video3.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-4",
+          "title": "Free Parking"
+        },
+        {
+          "icon": "icon-5",
+          "title": "Gym"
+        },
+        {
+          "icon": "icon-6",
+          "title": "24/7 Security"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Arena",
+      "price": 30000,
+      "rate": "3",
+      "images": [
+        "/image/hall6.jpeg"
+      ],
+      "videos": [
+        "/video/video4.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-7",
+          "title": "Conference Rooms"
+        },
+        {
+          "icon": "icon-8",
+          "title": "Room Service"
+        },
+        {
+          "icon": "icon-9",
+          "title": "Fitness Center"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Product 2",
+      "price": 15000,
+      "rate": "5",
+      "images": [
+        "/image/hall7.jpeg"
+      ],
+      "videos": [
+        "/video/video5.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-10",
+          "title": "Free Breakfast"
+        },
+        {
+          "icon": "icon-11",
+          "title": "Bar & Lounge"
+        },
+        {
+          "icon": "icon-12",
+          "title": "Laundry Service"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Product 1",
+      "price": 100000,
+      "rate": "5",
+      "images": [
+        "/image/hall8.jpeg"
+      ],
+      "videos": [
+        "/video/video6.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-13",
+          "title": "Pet-Friendly"
+        },
+        {
+          "icon": "icon-14",
+          "title": "Outdoor Activities"
+        },
+        {
+          "icon": "icon-15",
+          "title": "Airport Shuttle"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Product 2",
+      "price": 250000,
+      "rate": "4",
+      "images": [
+        "/image/hall9.jpeg"
+      ],
+      "videos": [
+        "/video/video7.mp4"
+      ],
+      "location": "Asadam, ilorin",
+      "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
+      "facilities": [
+        {
+          "icon": "icon-16",
+          "title": "Free Internet"
+        },
+        {
+          "icon": "icon-17",
+          "title": "Kid-Friendly"
+        },
+        {
+          "icon": "icon-18",
+          "title": "Poolside Bar"
+        }
+      ]
+    }
+  ]
+}

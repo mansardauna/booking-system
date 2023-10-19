@@ -6,41 +6,55 @@ function Header() {
   const filter = [
     {
       id: 1,
-      title: "Near me"
+      title: "Near me",
     },
     {
       id: 2,
-      title: "Recommended"
+      title: "Recommended",
     },
     {
       id: 3,
-      title: "Popular"
-    }
+      title: "Popular",
+    },
   ];
 
   const [activeFilter, setActiveFilter] = useState<number | null>(null);
   const [products, setProducts] = useState([]); // State to store product data
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState<Error | null>(null);
 
   const handleFilterClick = (id: number) => {
     setActiveFilter(id);
   };
 
   useEffect(() => {
-    // Simulate fetching product data from a mock API
-    // You can replace this with actual API calls
     const fetchProducts = async () => {
       try {
-        // Mock API endpoint or actual API endpoint
-        const response = await fetch('http://localhost:3001/products'); // Replace with your API endpoint
+        const response = await fetch('http://localhost:3003/products');
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
         const data = await response.json();
         setProducts(data);
-      } catch (error) {
+        setLoading(false);
+      } catch (error:any) {
         console.error('Error fetching product data:', error);
+        setError(error);
+        setLoading(false);
       }
     };
-
+  
     fetchProducts();
   }, []);
+  
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div className='flex flex-col'>
@@ -58,11 +72,14 @@ function Header() {
         ))}
       </div>
       <div className="flex">
-        <div className='grid md:grid-cols-3 grid-cols-1 gap-5 md:w-11/12 w-10/12 p-2 m-auto'>
+      {products.length > 1 ? (
+      <div className='grid md:grid-cols-3 grid-cols-1 gap-5 md:w-11/12 w-10/12 p-2 m-auto'>
           {products.map((product: any) => (
             <Product key={product.id} productInfo={product} show={showDetail} />
           ))}
-        </div>
+        </div>):(
+          <div>no product</div>
+        )}
         <div>
          
         </div>
