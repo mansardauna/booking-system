@@ -68,7 +68,7 @@ const ProductSearch: React.FC<{ products: Product[] }> = ({ products }) => {
       <input
         type='text'
         placeholder='Search by Name, Price, Location ....'
-        className='bg-transparent outline-none md:w-11/12 w-full border p-2 rounded-lg'
+        className='bg-transparent outline-none md:w-11/12 w-full border md:border-gray-400 md:bg-teal-700 p-2 rounded-lg'
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);

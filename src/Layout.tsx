@@ -49,7 +49,7 @@ function Layout() {
       </div>
       <Nav isDark={isDarkMode} products={products}/>
 
-      <div className={`md:ml-[20%] md:mt-[5%] mt-[32%] w-full block ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div className={`md:ml-[20%] md:mt-[5%] pb-10 mt-[32%] w-full block ${isDarkMode ? 'dark-mode' : ''}`}>
         <ScrollRestoration />
         <Outlet />
       </div>
