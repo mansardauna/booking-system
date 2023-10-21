@@ -2,7 +2,9 @@ import { CloseSquare, HambergerMenu, Moon, Sun1 } from 'iconsax-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrentLocation from '../../pages/Home/components/Nav/CurrentLocation';
+import Favourites from '../../pages/Home/components/Nav/NavFavourites';
 import Language from '../../pages/Home/components/Nav/Language';
+import NavNotifty from '../../pages/Home/components/Nav/NavNotifty';
 import { NavList, Rate } from '../ItemMap.tsx/NavList';
 
 interface SidebarProps {
@@ -18,12 +20,15 @@ const MobileSidebar: React.FC<SidebarProps> = ({isDarkMode, toggleDarkMode}) => 
   }
 
   return (
-    <div className='md:hidden block w-full  fixed z-10'>
+    <div className='md:hidden block w-full  fixed z-50'>
       {isSidebarOpen ? (
         <div className=" top-0  w-full left-2 p-2 justify-between flex items-center">
           <HambergerMenu size={32} onClick={handleToggleSidebar} />
-
+<div className="flex gap-2">
+          <NavNotifty/> 
+          <Favourites />
           <CurrentLocation />
+        </div>
         </div>
       ) : (
         <div className={`flex flex-col gap-5 relative bg-primary z-10  w-2/4 h-screen p-2 pr-0 justify-between pb-20 text-white ${isSidebarOpen ? 'hidden' : 'block'}`}>

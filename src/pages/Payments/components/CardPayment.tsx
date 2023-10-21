@@ -3,8 +3,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const stripePromise = loadStripe("YOUR_PUBLISHABLE_KEY"); // Replace with your Stripe publishable key
-
-const PaymentForm: React.FC = () => {
+interface Pay{
+  calculatedPrice:any;
+}
+const PaymentForm: React.FC<Pay> = ({calculatedPrice}) => {
   const [isPaymentSuccessful, setPaymentSuccessful] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -63,7 +65,7 @@ const PaymentForm: React.FC = () => {
             />
           </div>
           </div>
-          <button type="submit" className="bg-black rounded-lg p-2 shadow-lg float-right">Pay Now</button>
+          <button type="submit" className="bg-black rounded-lg p-2 shadow-lg float-right">Pay  NGN{calculatedPrice}</button>
         </form>
       )}
     </div>
@@ -85,9 +87,9 @@ const PaymentComponent: React.FC<Card> = ({productName, calculatedPrice}) => {
         </div>
         <div className="flex gap-3">
         <div className="">Price :</div>
-      <div className="">{calculatedPrice}</div> 
+      <div className="">NGN{calculatedPrice}</div> 
       </div>   
-      <PaymentForm />
+      <PaymentForm calculatedPrice={calculatedPrice} />
       </div>
     </Elements>
   );

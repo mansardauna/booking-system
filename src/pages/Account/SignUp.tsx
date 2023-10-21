@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import SignUpWithGoogle from './SignUpWithGoogle';
 
-function SignUp() {
+function YourComponent() {
+  const handleSignUpWithGoogle = () => {
+    // Implement the Google OAuth flow here
+    //  you can use Firebase Authentication for Google sign-up.
+  };
+
   return (
-    <div>SignUp</div>
-  )
+    <div>
+      <SignUpWithGoogle onSignUpWithGoogle={handleSignUpWithGoogle} />
+    </div>
+  );
 }
 
-export default SignUp
+export default YourComponent;

@@ -7,7 +7,8 @@ export const BookingButton: React.FC<{
 }> = ({ startDate, endDate, onBook }) => {
   return (
     <div className='m-auto w-fit mt-2'>
-      <button onClick={onBook} disabled={!startDate || !endDate} className="p-2 border border-gray-400 hover:bg-gray-900 rounded-md cursor-pointer "> 
+      <button onClick={onBook} disabled={!startDate || !endDate} className="p-2 shadow-md hover:bg-slate-700 
+      text-white bg-gray-900 rounded-md cursor-pointer "> 
         Book Now
       </button>
     </div>

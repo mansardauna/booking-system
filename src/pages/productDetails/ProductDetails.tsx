@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, ArrowRight, HeartAdd, Location, Star1 } from "iconsax-react";
+import { ArrowLeft, ArrowRight, CloseSquare, HeartAdd, Location, Star1 } from "iconsax-react";
 import FacilityIcons from "../../components/ItemMap.tsx/icons";
 import Button from "../../components/UI/Button";
 import { BookingButton } from "./components/BookingButton";
@@ -74,12 +74,15 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
     { type: "image", url: productInfo.images[0], alt: productInfo.name },
     { type: "video", url: productInfo.videos[0], alt: productInfo.name },
   ];
-
+    const handlePayment = () =>{
+      setShowPaymentComponent(true);
+      setIsBookVisible(!true)
+    }
   return (
-    <>
+    <div className="relative w-full  p-2 ">
       
         
-<div className="flex w-full m-auto md:flex-row flex-col gap-3 mt-4 ">
+<div className="flex w-full m-auto  md:flex-row flex-col gap-3 mt-4 ">
 <div className="md:w-1/2 w-full md:my-2 md:mx-0 my-2 mx-auto px-3">
   <Display media={media} />
 </div>
@@ -125,35 +128,41 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
     </div>
   </div>
 <Button variant="primary" onClick={() => setIsBookVisible(!isBookVisible)} className='w-fit m-auto bg-slate-600 rounded-md text-white'>
-        {isBookVisible ? "Cancel Booking " : "Booking Now"}
+        {isBookVisible ? "Cancel Booking " : "Book Date"}
       </Button>
 </div>
 </div>
 
 {isBookVisible && (
-        <div className=" md:absolute top-0 right-0 bg-primary p-2 items-center text-white h-full md:w-1/4 w-full fixed z-50
+        <div className=" top-28 md:top-16 right-0 bottom-0 border bg-white p-2 items-center  h-full md:w-1/4 w-full fixed md:z-10 z-50
         ">
-          <ArrowLeft onClick={() => setIsBookVisible(!isBookVisible)}/>
+          <CloseSquare color="gray" onClick={() => setIsBookVisible(!isBookVisible)}/>
           {isBooked ? (
-            <div className=" flex flex-col rounded-md gap-1 m-auto h-full md:p-4 p-2 cursor-pointer">
-              <div className=" border border-gray-400 p-2 rounded-xl">
-              <div className="w-fit m-auto text-xl ">Booking summary</div>
+            <div className=" rounded-md gap-1 m-auto h-full md:p-4 p-2 cursor-pointer">
+            <div className="w-fit m-auto text-2xl font-light mb-2 ">Booking summary</div>
+
+              <div className=" border border-gray-400 p-4 rounded-xl ">
               <div className="w-full flex gap-2 items-center justify-between">
-              <div className="text-xs md:text-base text-gray-300">Name </div>
+              <div className="text-xs md:text-base text-gray-600">Name </div>
                 <div className="uppercase md:text-lg">{username}</div>
                 </div>
 
+                <div className="w-full flex gap-2 items-center justify-between">
+              <div className="text-xs md:text-base text-gray-600">Event Type </div>
+                <div className="uppercase md:text-lg">{event}</div>
+                </div>
+
                 <div className="w-full flex gap-2 justify-between items-center">
-              <div className="text-xs md:text-base text-gray-300">Hall </div>
+              <div className="text-xs md:text-base text-gray-600">Hall </div>
                 <div className="uppercase md:text-lg ">{productInfo.name}</div>
                 </div>
               </div>
-              <div className="border p-2 rounded-lg  border-gray-400 mt-4">
+              <div className="border p-4 rounded-lg  border-gray-400 mt-4">
               <div className=" gap-2 items-center">
                 <div className="flex justify-between">
-                <div className="from w-32 text-center text-gray-300">Start date</div>
+                <div className="from w-32 text-center text-gray-600">Start date</div>
               
-                <div className=" w-32 text-center text-gray-300">End date</div>
+                <div className=" w-32 text-center text-gray-600">End date</div>
                 </div>
                 <div className="flex justify-between items-center mt-4">
                 <div className="uppercase text-center">
@@ -165,15 +174,15 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
                 </div>
                 </div>
               </div>
-              <div className="items-center mt-3 text-gray-300 flex justify-between">
+              <div className="items-center mt-3 text-gray-600 flex justify-between">
                 Calculated Price
-                <span className=" text-white" > NGN {calculatedPrice}</span>
+                <span className=" text-gray-600" > NGN {calculatedPrice}</span>
               </div>
               </div>
               <Button
                 variant="primary"
-                className=" bg-slate-800 p-2 flex w-fit text-white rounded-md m-auto items-center gap-2 justify-between"
-                onClick={() => setShowPaymentComponent(true)}
+                className=" bg-slate-800 p-2 flex w-fit text-white rounded-md m-auto mt-4 items-center gap-2 justify-between"
+                onClick={handlePayment}
               >
                 
                 <div>Proceed to payment</div>
@@ -182,9 +191,9 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
             </div>
 
           ) : (
-            <div className=" m-auto  h-5/6 gap-3 flex flex-col rounded-md ">
-              <div className="text-2xl font-semibold mx-auto w-fit uppercase">Booking form</div>
-              <div className="border p-2 rounded-lg mt-5">
+            <div className=" m-auto  h-5/6 gap-3 flex flex-col p-2 rounded-md ">
+              <div className="text-2xl font-light mx-auto w-fit uppercase">Booking form</div>
+              <div className="border p-2 rounded-lg mt-5 border-gray-400">
               <div className="flex gap-2 items-center p-2 justify-between">
                 <label className=" ">Event Name</label>
                 <input
@@ -213,11 +222,12 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
           )}
         </div>
         )}
+        <BookedDatesList bookedDates={bookedDates}/>
         <PaymentModal productName={productInfo.name} calculatedPrice={calculatedPrice} 
        isOpen={showPaymentComponent}
         onRequestClose={() => setShowPaymentComponent(false)}/>
     
-    </>
+    </div>
   );
 };
 

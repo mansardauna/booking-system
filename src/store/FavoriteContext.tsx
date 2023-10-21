@@ -7,12 +7,18 @@ interface Product {
   price: number;
   quantity: number;
 }
+interface Booking {
+  startDate: Date;
+  endDate: Date;
+  username: string;
+  event: string;
+}
 
 interface OrebiState {
   products: Product[];
   watchlist: Product[]; // 
   orders: Product[];
-  orderHistory: Product[];
+  orderHistory: Booking[];
 }
 
 type StoreAction =
@@ -60,6 +66,7 @@ export const ActionTypes = {
   RESET_ORDERS: "RESET_ORDERS",
   ADD_TO_ORDER_HISTORY: "ADD_TO_ORDER_HISTORY",
   REMOVE_ORDER_HISTORY: "REMOVE_ORDER_HISTORY",
+  
 } as const;
 
 const storeReducer: React.Reducer<OrebiState, StoreAction> = (state, action) => {
