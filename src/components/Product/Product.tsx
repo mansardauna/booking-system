@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ArrowRight, HeartAdd, Location, Star1 } from 'iconsax-react';
+import { ArrowRight, Heart, HeartAdd, Location, Star1 } from 'iconsax-react';
 
 import Button from '../UI/Button';
 import ProductDetail from '../../pages/productDetails/ProductDetails';
 import { useNavigate } from 'react-router-dom';
 import RoomGallery from './RoomGallery';
+import { ActionTypes, useStoreDispatch } from '../../store/FavoriteContext';
 
 type ProductProps = {
   productInfo: any;
@@ -13,6 +14,10 @@ type ProductProps = {
 
 const Product: React.FC<ProductProps> = ({ productInfo, show }) => {
   const [showDetail, setShowDetail] = useState(false);
+  const [isInWatchlist, setIsInWatchlist] = useState(false);
+
+  const storeDispatch = useStoreDispatch(); // Get the dispatch function from your store
+
 
   const _id = productInfo.name;
   const idString = (_id: string) => {
@@ -37,16 +42,32 @@ const Product: React.FC<ProductProps> = ({ productInfo, show }) => {
     return <div>Product information is missing.</div>;
   }
 
+
+  const handleFav = () => {
+    setIsInWatchlist(!isInWatchlist);
+
+    if (!isInWatchlist) {
+      // Dispatch the action to add the item to the watchlist
+      storeDispatch({ type: ActionTypes.ADD_TO_WATCHLIST, payload: productInfo });
+    } else {
+      // Dispatch the action to remove the item from the watchlist
+      storeDispatch({ type: ActionTypes.REMOVE_FROM_WATCHLIST, payload: productInfo._id });
+    }
+  };
   return (
-    <div className="border rounded-2xl border-gray-200">
+    <div className="border p-2 bg-slate-50 w-11/12 rounded-2xl border-gray-200 ">
       <RoomGallery media={media}/>
       <div className="flex items-center p-2 justify-between">
         <div className="text-xl font-semibold">{productInfo.name}</div>
-        <HeartAdd size={20}className="cursor-pointer" />
+        <div onClick={handleFav}>
+        {isInWatchlist ? (
+         <Heart />
+        ):( <HeartAdd className="cursor-pointer"  />)}
+        </div>
       </div>
       <div className="flex items-center p-2 justify-between">
       <div className="flex items-center cursor-pointer gap-1">
-        <Star1 size={17} color={'gold'} />
+        <Star1 size={17} color={'gold'}/>
         <div className="font-semibold">{productInfo.rate}</div>
         <div className="star">star</div>
       </div>

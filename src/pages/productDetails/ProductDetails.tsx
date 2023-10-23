@@ -9,6 +9,7 @@ import Display from "./components/Display";
 import { ActionTypes, useStoreDispatch } from "../../store/FavoriteContext";
 import PaymentComponent from "../Payments/components/CardPayment";
 import PaymentModal from "../Payments/components/PaymentModal";
+import { useNavigate } from "react-router-dom";
 
 interface InfoProps {
   productInfo: any;
@@ -45,6 +46,23 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
       storeDispatch({ type: ActionTypes.REMOVE_FROM_WATCHLIST, payload: productInfo._id });
     }
   };
+  const handlePaymentComplete = () =>{
+    setShowPaymentComponent(false)
+  storeDispatch({
+      type: ActionTypes.ADD_TO_ORDER_HISTORY,
+      payload: {
+        _id : productInfo._id,
+        username: username,
+        event: event,
+        name: productInfo.name,
+        price: calculatedPrice,
+        startDate: selectedStartDate,
+        endDate : selectedEndDate,
+      },
+    });
+
+
+  }
 
   const handleBookRoom = () => {
     if (selectedStartDate && selectedEndDate) {
@@ -223,9 +241,14 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
         </div>
         )}
         <BookedDatesList bookedDates={bookedDates}/>
-        <PaymentModal productName={productInfo.name} calculatedPrice={calculatedPrice} 
-       isOpen={showPaymentComponent}
-        onRequestClose={() => setShowPaymentComponent(false)}/>
+        <PaymentModal
+        productName={productInfo.name}
+        calculatedPrice={calculatedPrice}
+        isOpen={showPaymentComponent}
+        onRequestClose={handlePaymentComplete}
+        showPaymentComponent={showPaymentComponent}
+        setShowPaymentComponent={setShowPaymentComponent}
+      />
     
     </div>
   );

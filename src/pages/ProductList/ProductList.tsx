@@ -42,7 +42,6 @@ function ProductList() {
     setFilteredProducts(filtered);
   };
 
-  // Function to handle filtering based on location
   const filterByLocation = (location: string) => {
     const filtered = products.filter((product) => {
       const productLocation = product.location; // Assuming the location is a property of the product
@@ -54,7 +53,8 @@ function ProductList() {
   // Function to handle filtering based on facilities
   const filterByFacilities = (selectedFacilities: string[]) => {
     const filtered = products.filter((product) => {
-      const productFacilities = product.facilities; // Assuming facilities is an array property of the product
+      const productFacilities = product.facilities; 
+      
       return selectedFacilities.every((facility) => productFacilities.includes(facility));
     });
     setFilteredProducts(filtered);

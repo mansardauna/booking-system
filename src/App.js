@@ -7,6 +7,7 @@ import Profile from './pages/Account/Profile';
 import SignUp from './pages/Account/SignUp';
 import SingIn from './pages/Account/SignUpWithGoogle';
 import BookingForm from './pages/Booking/components/BookingForm';
+import PaymentTicket from './pages/Booking/components/PaymentTicket';
 import Favourite from './pages/Favourite/Favourite';
 import Home from './pages/Home/Home';
 import HotelRoom from './pages/notification/components/HotelRoom';
@@ -17,6 +18,8 @@ import ProductList from './pages/ProductList/ProductList';
 import Settings from './pages/Settings/Settings';
 import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContext';
 import FavouriteList from './store/FavouriteList';
+import FavPage from './store/FavPage';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,11 +33,11 @@ const router = createBrowserRouter(
         <Route path='/store' element={<ProductList/>}/>
         <Route path="/signin" element={<SingIn />} />
         <Route path="/Notification" element={<Notification />} />
-        <Route path="/fav" element={<FavouriteList />} />
         <Route path="/user" element={<Profile />} />
         <Route path="/location" element={<MapWithLocationTracker />} />
-        <Route path='/favourite' element={<FavouriteList/>} />
+        <Route path='/favourite' element={<FavPage/>} />
         <Route path='/settings' element={<Settings/>}/>
+        <Route path='/product-ticket' element={<PaymentTicket />}/>
       </Route>
     </Route>
   )

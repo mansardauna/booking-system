@@ -1,8 +1,11 @@
 import React from 'react'
+import TicketHistory from '../Booking/components/TicketHistory'
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div>
+      <TicketHistory/>
+    </div>
   )
 }
 

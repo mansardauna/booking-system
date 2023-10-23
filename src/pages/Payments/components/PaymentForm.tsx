@@ -100,11 +100,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
 interface PaymentComponentProps {
   productName: string;
   calculatedPrice: number;
-  showPaymentComponent:any;
-  setShowPaymentComponent:any;
 }
 
-const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calculatedPrice, showPaymentComponent, setShowPaymentComponent }) => {
+const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calculatedPrice }) => {
 
 
   return (

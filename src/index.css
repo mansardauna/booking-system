@@ -45,3 +45,19 @@ code {
 .logo{
   font-family: 'Dancing Script', cursive;
 }
+
+
+
+/* Slider container */
+
+
+/* Slide item */
+.slick-slide {
+  transition: transform 0.3s ease;
+}
+
+/* Active slide item */
+
+
+
+/* Add more styles as needed */

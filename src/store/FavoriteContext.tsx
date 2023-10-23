@@ -8,15 +8,19 @@ interface Product {
   quantity: number;
 }
 interface Booking {
-  startDate: Date;
-  endDate: Date;
+  _id: number;
+  startDate: any;
+  endDate: any;
   username: string;
   event: string;
+  name : string;
+  price: number
+
 }
 
 interface OrebiState {
   products: Product[];
-  watchlist: Product[]; // 
+  watchlist: Product[]; 
   orders: Product[];
   orderHistory: Booking[];
 }
@@ -27,20 +31,20 @@ type StoreAction =
   | { type: "DECREASE_QUANTITY"; payload: { _id: number } }
   | { type: "DELETE_ITEM"; payload: number }
   | { type: "RESET_CART" }
-  | { type: "ADD_TO_WATCHLIST"; payload: Product } // Add action for adding to the watchlist
-  | { type: "REMOVE_FROM_WATCHLIST"; payload: number } // Add action for removing from the watchlist
+  | { type: "ADD_TO_WATCHLIST"; payload: Product }
+  | { type: "REMOVE_FROM_WATCHLIST"; payload: number }
   | { type: "ADD_ORDER"; payload: Product }
   | { type: "REMOVE_ORDER"; payload: number }
   | { type: "INCREASE_ORDER_QUANTITY"; payload: { _id: number } }
   | { type: "DECREASE_ORDER_QUANTITY"; payload: { _id: number } }
   | { type: "DELETE_ORDER"; payload: number }
   | { type: "RESET_ORDERS" }
-  | { type: "ADD_TO_ORDER_HISTORY"; payload: Product }
+  | { type: "ADD_TO_ORDER_HISTORY"; payload: Booking }
   | { type: "REMOVE_ORDER_HISTORY"; payload: number };
 
 const initialState: OrebiState = {
   products: [],
-  watchlist: [], // Initialize the watchlist as an empty array
+  watchlist: [],
   orders: [],
   orderHistory: [],
 };
@@ -66,25 +70,29 @@ export const ActionTypes = {
   RESET_ORDERS: "RESET_ORDERS",
   ADD_TO_ORDER_HISTORY: "ADD_TO_ORDER_HISTORY",
   REMOVE_ORDER_HISTORY: "REMOVE_ORDER_HISTORY",
-  
 } as const;
 
 const storeReducer: React.Reducer<OrebiState, StoreAction> = (state, action) => {
   switch (action.type) {
     case ActionTypes.ADD_TO_WATCHLIST: {
-      const itemIndex = state.watchlist.findIndex((item) => item._id === action.payload._id);
-
-      if (itemIndex !== -1) {
-        state.watchlist[itemIndex].quantity += 1;
-      } else {
-        state.watchlist.push({ ...action.payload, quantity: 1 });
-      }
-      return { ...state };
+      const updatedWatchlist = [...state.watchlist, action.payload];
+      return { ...state, watchlist: updatedWatchlist };
     }
 
     case ActionTypes.REMOVE_FROM_WATCHLIST: {
+      // Remove the item from the watchlist based on the item's _id
       const updatedWatchlist = state.watchlist.filter((item) => item._id !== action.payload);
       return { ...state, watchlist: updatedWatchlist };
+    }
+
+    case ActionTypes.ADD_TO_ORDER_HISTORY: {
+      const updateHistory = [...state.orderHistory, action.payload];
+      return { ...state, orderHistory: updateHistory };
+    }
+
+    case ActionTypes.REMOVE_ORDER_HISTORY: {
+      const updateHistory = state.orderHistory.filter((item) => item._id !== action.payload);
+      return { ...state, orderHistory: updateHistory };
     }
 
     // Add cases for other actions
@@ -123,7 +131,3 @@ export const useStoreDispatch = () => {
   }
   return context.dispatch;
 };
-
-
-
-
