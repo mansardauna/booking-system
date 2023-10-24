@@ -3,8 +3,9 @@ import TicketHistory from '../Booking/components/TicketHistory'
 
 function Profile() {
   return (
-    <div>
+    <div className='flex relative'>
       <TicketHistory/>
+      <div className="user">User</div>
     </div>
   )
 }

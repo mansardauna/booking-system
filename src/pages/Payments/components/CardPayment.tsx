@@ -43,16 +43,13 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
       }
     }
   };
+  
 
   const handlePaymentSuccess = (item:any) => {
     setShowPaymentComponent(false);
     setPaymentSuccessful(true);
 
-    // Create a ticket with the booking details
-   
-
-    // Dispatch the action to add the ticket to your store
-    storeDispatch({ type: ActionTypes.ADD_TO_ORDER_HISTORY, payload:item._id });
+    
   };
 
   return (

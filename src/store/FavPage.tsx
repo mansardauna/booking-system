@@ -14,7 +14,7 @@ function FavPage() {
     }
   return (
     <div>
-      <h1>My Favorite List</h1>
+      <div className="w-fit m-auto font-extralight p-2 mt-3 text-2xl ">My Favorite List</div>
       <FavoriteList onRemoveFromWatchlist={removeFromWatchlist} watchlistItems={state.watchlist} />
     </div>
   );

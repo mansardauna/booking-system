@@ -14,7 +14,8 @@ interface Booking {
   username: string;
   event: string;
   name : string;
-  price: number
+  price: number;
+  TotalPrice: number;
 
 }
 
