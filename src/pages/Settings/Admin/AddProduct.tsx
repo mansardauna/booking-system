@@ -90,7 +90,7 @@ const AddProductForm: React.FC = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3003/products', {
+      const response = await fetch('http://localhost:3003/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
