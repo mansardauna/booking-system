@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ArrowRight, Heart, HeartAdd, Location, Star1 } from 'iconsax-react';
 
 import Button from '../UI/Button';
-import ProductDetail from '../../pages/productDetails/ProductDetails';
 import { useNavigate } from 'react-router-dom';
 import RoomGallery from './RoomGallery';
 import { ActionTypes, useStoreDispatch } from '../../store/FavoriteContext';

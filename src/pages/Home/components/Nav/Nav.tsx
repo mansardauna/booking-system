@@ -37,7 +37,6 @@ const Nav:React.FC<NavProp>=({isDark, products}) =>{
       <Language />
       <Favourites />
       <NavNotifty />
-      <Profile />
     </div>
     </div>
   )

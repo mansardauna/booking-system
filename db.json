@@ -1,6 +1,5 @@
 {
   "categories": [
-  
     {
       "id": 1,
       "title": "Near me"
@@ -17,12 +16,19 @@
   "products": [
     {
       "id": 1,
-      "name": "The Royals",
-      "price": 10000,
-      "rate": "4",
-      "images": ["/image/hall1.jpeg", "/image/hall2.jpeg", "/image/hall3.jpeg"],
-      "videos": ["/video/video1.mp4", "/video/video2.mp4"],
-      "location": "Asadam, ilorin",
+      "name": " Royals",
+      "price": "12000",
+      "rate": "4.5",
+      "images": [
+        "/image/hall1.jpeg",
+        "/image/hall2.jpeg",
+        "/image/hall3.jpeg"
+      ],
+      "videos": [
+        "/video/video1.mp4",
+        "/video/video2.mp4"
+      ],
+      "location": "Asadam",
       "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
@@ -44,9 +50,14 @@
       "id": 2,
       "name": "The Rock",
       "price": 150000,
-      "rate": "6",
-      "images": ["/image/hall4.jpeg", "/image/hall5.jpeg"],
-      "videos": ["/video/video3.mp4"],
+      "rate": "6.5",
+      "images": [
+        "/image/hall4.jpeg",
+        "/image/hall5.jpeg"
+      ],
+      "videos": [
+        "/video/video3.mp4"
+      ],
       "location": "Gbagba",
       "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
@@ -70,9 +81,13 @@
       "name": "Arena",
       "price": 30000,
       "rate": "3",
-      "images": ["/image/hall6.jpg"],
-      "videos": ["/video/video4.mp4"],
-      "location": "Asadam, ilorin",
+      "images": [
+        "/image/hall6.jpg"
+      ],
+      "videos": [
+        "/video/video4.mp4"
+      ],
+      "location": "Mandate",
       "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
@@ -92,13 +107,17 @@
     },
     {
       "id": 4,
-      "name": "Product 2",
+      "name": " The Vallery",
       "price": 15000,
-      "rate": "5",
-      "images": ["/image/hall7.jpeg"],
-      "videos": ["/video/video5.mp4"],
-      "location": "Asadam, ilorin",
-      "category": "Popular",
+      "rate": "5.1",
+      "images": [
+        "/image/hall7.jpeg"
+      ],
+      "videos": [
+        "/video/video5.mp4"
+      ],
+      "location": "saw-mill",
+      "category": "Recommended",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -117,12 +136,16 @@
     },
     {
       "id": 5,
-      "name": "Product 1",
-      "price": 100000,
-      "rate": "5",
-      "images": ["/image/hall8.jpg"],
-      "videos": ["/video/video6.mp4"],
-      "location": "Asadam, ilorin",
+      "name": "SunShine",
+      "price": "120000",
+      "rate": "5.1",
+      "images": [
+        "/image/hall8.jpg"
+      ],
+      "videos": [
+        "/video/video6.mp4"
+      ],
+      "location": "Airport",
       "category": "Near me",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
@@ -142,13 +165,17 @@
     },
     {
       "id": 6,
-      "name": "Product 2",
+      "name": "Owambe",
       "price": 250000,
-      "rate": "4",
-      "images": ["/image/hall9.jpg"],
-      "videos": ["/video/video7.mp4"],
-      "location": "Asadam, ilorin",
-      "category": "Recommended",
+      "rate": "4.5",
+      "images": [
+        "/image/hall9.jpg"
+      ],
+      "videos": [
+        "/video/video7.mp4"
+      ],
+      "location": "Olorunshogo",
+      "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {
@@ -167,12 +194,16 @@
     },
     {
       "id": 7,
-      "name": "Product 2",
+      "name": "Party Rider",
       "price": 250000,
-      "rate": "4",
-      "images": ["/image/hall6.jpg"],
-      "videos": ["/video/video7.mp4"],
-      "location": "Asadam, ilorin",
+      "rate": "3.5",
+      "images": [
+        "/image/hall6.jpg"
+      ],
+      "videos": [
+        "/video/video7.mp4"
+      ],
+      "location": "Tanke",
       "category": "Recommended",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
@@ -192,13 +223,17 @@
     },
     {
       "id": 8,
-      "name": "Product 2",
+      "name": "Westend",
       "price": 250000,
-      "rate": "4",
-      "images": ["/image/hall2.jpeg"],
-      "videos": ["/video/video7.mp4"],
-      "location": "Asadam, ilorin",
-      "category": "Recommended",
+      "rate": "5.0",
+      "images": [
+        "/image/hall2.jpeg"
+      ],
+      "videos": [
+        "/video/video7.mp4"
+      ],
+      "location": "Sango",
+      "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
         {

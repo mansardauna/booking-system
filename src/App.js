@@ -15,6 +15,9 @@ import Notification from './pages/notification/components/Notification';
 import Detail from './pages/productDetails/components/Detail';
 import ProductDetail from './pages/productDetails/ProductDetails';
 import ProductList from './pages/ProductList/ProductList';
+import AddProductForm from './pages/Settings/Admin/AddProduct';
+import Admin from './pages/Settings/Admin/Admin';
+import EditProduct from './pages/Settings/Admin/EditProduct';
 import Settings from './pages/Settings/Settings';
 import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContext';
 import FavouriteList from './store/FavouriteList';
@@ -36,6 +39,9 @@ const router = createBrowserRouter(
         <Route path="/user" element={<Profile />} />
         <Route path="/location" element={<MapWithLocationTracker />} />
         <Route path='/favourite' element={<FavPage/>} />
+        <Route path='/register' element={<AddProductForm/>} />
+        <Route path='/Management' element={<EditProduct/>} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/product-ticket' element={<PaymentTicket />}/>
       </Route>
