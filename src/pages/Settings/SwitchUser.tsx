@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FaUserCircle } from 'react-icons/fa';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button';
@@ -22,7 +23,11 @@ function SwitchUser() {
   return (
     <div>
 <div className='md:w-52 md:shadow-lg md:rounded-lg md:h-40 w-full bg-transparent border p-2 cursor-pointer text-center text-2xl flex md:flex-col justify-between' onClick={openModal}>
-  <span>Switch to Admin</span>
+  <div className=' items-center flex md:flex-col gap-3 md:mt-5'>
+    <FaUserCircle className='md:text-4xl'/>
+    <span>Switch to Admin</span>
+
+  </div>
 </div>
 <Modal  isOpen={modalIsOpen}
         onRequestClose={closeModal} 

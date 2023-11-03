@@ -5,7 +5,7 @@ import Layout from './Layout';
 import MapWithLocationTracker from './pages/Account/Location';
 import Profile from './pages/Account/Profile';
 import SignUp from './pages/Account/SignUp';
-import SingIn from './pages/Account/SignUpWithGoogle';
+import SingIn from './pages/Account/SignIn';
 import BookingForm from './pages/Booking/components/BookingForm';
 import PaymentTicket from './pages/Booking/components/PaymentTicket';
 import Favourite from './pages/Favourite/Favourite';
@@ -20,8 +20,8 @@ import Admin from './pages/Settings/Admin/Admin';
 import EditProduct from './pages/Settings/Admin/EditProduct';
 import Settings from './pages/Settings/Settings';
 import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContext';
-import FavouriteList from './store/FavouriteList';
-import FavPage from './store/FavPage';
+import FavouriteList from './pages/Favourite/components/FavouriteList';
+import FavPage from './pages/Favourite/FavPage';
 
 
 const router = createBrowserRouter(

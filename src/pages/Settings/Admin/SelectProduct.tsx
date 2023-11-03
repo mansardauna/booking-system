@@ -31,7 +31,7 @@ const SelectProduct: React.FC<SelectProductProps> = ({ products, onSelectProduct
 
   return (
     <div className="md:w-1/3 p-2 h-full overflow-auto">
-      <div className="w-fit text-2xl font-light m-auto">Select your Hall</div>
+      <div className="w-fit text-2xl font-light m-auto text-center">Search for your hall and click the search button</div>
       <input
         type="text"
         placeholder="Search by name, price, or location"

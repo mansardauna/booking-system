@@ -1,4 +1,42 @@
 {
+  "users": [
+    {
+      "username": "Questy",
+      "password": "mansur"
+    }
+  ],
+  "signup": [
+    {
+      "username": "sardauna",
+      "password": "questy",
+      "id": 1
+    },
+    {
+      "username": "sardauna",
+      "password": "questy",
+      "id": 2
+    },
+    {
+      "username": "sardauna",
+      "password": "questy",
+      "id": 3
+    },
+    {
+      "username": "sardauna",
+      "password": "questy",
+      "id": 4
+    },
+    {
+      "username": "sardauna",
+      "password": "questy",
+      "id": 5
+    },
+    {
+      "username": "Kawthara",
+      "password": "1234",
+      "id": 6
+    }
+  ],
   "categories": [
     {
       "id": 1,
@@ -58,7 +96,7 @@
       "videos": [
         "/video/video3.mp4"
       ],
-      "location": "Gbagba",
+      "location": "Gbagba area",
       "category": "Popular",
       "des": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum velit aperiam hic. Quibusdam, aliquid? Rem officiis eligendi placeat praesentium voluptatem. Corrupti numquam assumenda rerum quia perspiciatis temporibus, vero fugiat libero.",
       "facilities": [
@@ -80,7 +118,7 @@
       "id": 3,
       "name": "Arena",
       "price": 30000,
-      "rate": "3",
+      "rate": "3.5",
       "images": [
         "/image/hall6.jpg"
       ],
@@ -195,7 +233,7 @@
     {
       "id": 7,
       "name": "Party Rider",
-      "price": 250000,
+      "price": "25000",
       "rate": "3.5",
       "images": [
         "/image/hall6.jpg"

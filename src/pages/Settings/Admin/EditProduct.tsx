@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import useFetchProducts from '../../../Hooks/useFetchProduct';
+import React, { useState, useEffect } from 'react';
+import useFetchProducts from '../../../Hooks/useFetchProduct'; // Import the hook
 import Authorization from './Authorize';
 import SelectProduct from './SelectProduct';
 
 function EditProduct() {
-  const { products, loading, updateProduct } = useFetchProducts();
-  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const { products, loading, updateProduct } = useFetchProducts(); // Access the updateProduct function
 
-  const handleSelectProduct = (productId: number) => {
+  const [selectedProductId, setSelectedProductId] = useState(null);
+
+  const handleSelectProduct = (productId: any) => {
     setSelectedProductId(productId);
   };
 
-  const handleUpdateProduct = (updatedProduct: any) => {
-    // You can use the `updateProduct` function to update the product
-    updateProduct(updatedProduct);
+  const handleUpdateProduct = (updatedProducts: any) => {
+   
   };
 
   return (
     <div>
-      <div className="w-fit text-3xl font-light m-a m-auto">Product Management</div>
+      <div className='w-fit text-3xl font-light m-a m-auto'>Product Management</div>
       <div className="md:flex">
         <SelectProduct products={products} onSelectProduct={handleSelectProduct} />
-        {selectedProductId !== null && (
+        {selectedProductId && (
           <Authorization
-            product={products.find((product) => product._id === selectedProductId)}
+            product={products.find((product: any) => product.id === selectedProductId)}
             onUpdateProduct={handleUpdateProduct}
           />
         )}

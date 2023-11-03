@@ -1,6 +1,8 @@
 import { Heart, HeartSlash } from "iconsax-react";
 import React from "react";
-import { useStore } from "./FavoriteContext";
+import { useNavigate } from "react-router-dom";
+import DetailButton from "./DetailButton";
+import { useStore, useStoreDispatch } from "../../../store/FavoriteContext";
 
 interface Product {
   _id: number;
@@ -16,6 +18,12 @@ interface FavoriteListProps {
 }
 
 const FavoriteList: React.FC<FavoriteListProps> = ({ onRemoveFromWatchlist, watchlistItems }) => {
+
+  const storeDispatch = useStoreDispatch(); // Get the dispatch function from your store
+
+
+ 
+
   const removeFromWatchlist = 
     onRemoveFromWatchlist;
   
@@ -39,7 +47,7 @@ const FavoriteList: React.FC<FavoriteListProps> = ({ onRemoveFromWatchlist, watc
               </div>
               <div className="text-gray-400">{item.location}</div>
               <div className=" font-semibold">NGN{item.price} /Day</div>
-             
+             <DetailButton watchlistItems={item}/>
             </div>
           </div>
         ))}

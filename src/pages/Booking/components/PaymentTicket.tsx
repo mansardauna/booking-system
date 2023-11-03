@@ -3,6 +3,7 @@ import Button from "../../../components/UI/Button";
 import { ActionTypes, useStore, useStoreDispatch } from "../../../store/FavoriteContext";
 import QRCode from "qrcode.react"; // Import the QRCode component from the library
 import Modal from 'react-modal';
+import { Ticket } from "iconsax-react";
 
 
 Modal.setAppElement('#root'); // Set the root element for the modal
@@ -56,15 +57,22 @@ const PaymentTicket: React.FC = () => {
 
   if (state.orderHistory.length === 0) {
     return<>
-     <div className="md:w-52 md:h-40 p-2 md:shadow-lg border text-2xl md:text-3xl bg-transparent md:text-center cursor-pointer rounded-md" onClick={openModal}>No Ticket</div>
+     <div className="md:w-52 md:h-40 p-2 md:shadow-lg border text-2xl md:text-3xl bg-transparent md:text-center cursor-pointer rounded-md" onClick={openModal}>
+     <div className=' items-center flex md:flex-col gap-3 md:mt-5'>
+    <Ticket className='md:text-5xl'/>
+    <span className='text-2xl'> No Ticket History</span>
+    </div>
+     </div>
      </>
   }
 
   return (
     <div className="">
       <div className="md:w-52 md:h-40 p-2 md:shadow-lg border text-2xl md:text-3xl flex flex-col gap-3 bg-transparent md:text-center cursor-pointer rounded-md" onClick={openModal}>
-        <span>My Ticket</span>
-        <span className=" text-sm"> You have {state.orderHistory.length}  Tickets</span>
+      <div className=' items-center flex md:flex-col gap-3 md:mt-5'>
+    <Ticket className='md:text-5xl'/>
+    <span className='text-2xl'>Ticket History</span>
+    </div>        <span className=" text-sm"> You have {state.orderHistory.length}  Tickets</span>
       </div>
       <Modal
           isOpen={modalIsOpen}

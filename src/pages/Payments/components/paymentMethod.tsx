@@ -1,3 +1,4 @@
+import { MoneyChange } from 'iconsax-react';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Button from '../../../components/UI/Button';
@@ -56,7 +57,10 @@ function PaymentMethodModal() {
   return (
     <>
     <div className='md:w-52 md:shadow-lg md:rounded-lg md:h-40 w-full bg-transparent border p-2 cursor-pointer text-center flex md:flex-col justify-between' onClick={openModal} >
-      <div className="title text-2xl ">Payment Method</div>
+    <div className=' items-center flex md:flex-col gap-3 md:mt-5'>
+    <MoneyChange className='md:text-5xl'/>
+    <span className='text-2xl'>Payment Method</span>
+    </div>
       <div className="">
           {selectedPaymentMethod && (
             <>

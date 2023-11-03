@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import FavoriteList from "./FavouriteList";
-import { ActionTypes, useStore, useStoreDispatch } from "./FavoriteContext"; // Import the store dispatch function
+import FavoriteList from "./components/FavouriteList";
+import { ActionTypes, useStore, useStoreDispatch } from "../../store/FavoriteContext"; // Import the store dispatch function
 
 function FavPage() {
   const storeDispatch = useStoreDispatch(); // Get the dispatch function from your context

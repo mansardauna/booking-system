@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import Button from '../../../components/UI/Button';
+import useFetchProducts from '../../../Hooks/useFetchProduct'; // Import the hook
 
 interface Facility {
   icon: string;
@@ -7,11 +8,12 @@ interface Facility {
 }
 
 interface NewProduct {
+  id: number;
   name: string;
   price: number;
   rate: string;
-  images: File[];
-  videos: File[];
+  images: string[];
+  videos: string[];
   location: string;
   category: string;
   des: string;
@@ -20,6 +22,7 @@ interface NewProduct {
 
 const AddProductForm: React.FC = () => {
   const [newProduct, setNewProduct] = useState<NewProduct>({
+    id: 0,
     name: '',
     price: 0,
     rate: '0',
@@ -31,6 +34,8 @@ const AddProductForm: React.FC = () => {
     facilities: [],
   });
 
+  const { addProduct } = useFetchProducts(); // Use the addProduct function from the hook
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setNewProduct({
@@ -39,25 +44,25 @@ const AddProductForm: React.FC = () => {
     });
   };
 
-  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const images = Array.from(e.target.files);
-      setNewProduct({
-        ...newProduct,
-        images,
-      });
-    }
-  };
+  // const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const images = Array.from(e.target.files);
+  //     setNewProduct({
+  //       ...newProduct,
+  //       images,
+  //     });
+  //   }
+  // };
 
-  const handleVideoUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const videos = Array.from(e.target.files);
-      setNewProduct({
-        ...newProduct,
-        videos,
-      });
-    }
-  };
+  // const handleVideoUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const videos = Array.from(e.target.files);
+  //     setNewProduct({
+  //       ...newProduct,
+  //       videos,
+  //     });
+  //   }
+  // };
 
   const handleAddFacility = () => {
     const newFacility: Facility = {
@@ -71,50 +76,24 @@ const AddProductForm: React.FC = () => {
     });
   };
 
-  const handleFacilityChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const { name, value } = e.target;
-    const updatedFacilities = [...newProduct.facilities];
-    updatedFacilities[index] = {
-      ...updatedFacilities[index],
-      [name]: value,
-    };
-
-    setNewProduct({
-      ...newProduct,
-      facilities: updatedFacilities,
-    });
-  };
-
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3003/api/products', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newProduct),
-      });
+      // Use the addProduct function from the hook to add the new product
+      await addProduct(newProduct);
 
-      if (response.ok) {
-        const addedProduct = await response.json();
-        // Reset the form
-        setNewProduct({
-          name: '',
-          price: 0,
-          rate: '0',
-          images: [],
-          videos: [],
-          location: '',
-          category: 'Near me',
-          des: '',
-          facilities: [],
-        });
-      } else {
-        console.error('Failed to add product:', response.statusText);
-      }
+      // Reset the form
+      setNewProduct({
+        id: 0,
+        name: '',
+        price: 0,
+        rate: '0',
+        images: [],
+        videos: [],
+        location: '',
+        category: 'Near me',
+        des: '',
+        facilities: [],
+      });
     } catch (error) {
       console.error('Error adding product:', error);
     }
@@ -149,7 +128,7 @@ const AddProductForm: React.FC = () => {
           <input type="text" name="rate" value={newProduct.rate} onChange={handleChange} className="p-2 border rounded-md" />
         </div>
       </div>
-      <div className="md:flex justify-between gap-2">
+      {/* <div className="md:flex justify-between gap-2">
         <div className='flex gap-2 items-center'>
           <label>Images</label>
           <input type="file" name="images" multiple onChange={handleImageUpload} className="border p-2" />
@@ -158,7 +137,7 @@ const AddProductForm: React.FC = () => {
           <label>Videos</label>
           <input type="file" name="videos" multiple onChange={handleVideoUpload} className="border p-2" />
         </div>
-      </div>
+      </div> */}
       <div className='flex gap-2 items-center'>
         <label>Category</label>
         <select name="category" value={newProduct.category} onChange={handleCategoryChange} className="p-2">
@@ -173,26 +152,26 @@ const AddProductForm: React.FC = () => {
       </div>
       <div className="flex gap-2 items-center">
         <label>Facilities:</label>
-        {newProduct.facilities.map((facility, index) => (
+        {/* {newProduct.facilities.map((facility, index) => (
           <div key={index} className="flex gap-2">
-            <input
-              type="text"
-              name="icon"
-              value={facility.icon}
-              placeholder="Facility Icon"
-              onChange={(e) => handleFacilityChange(e, index)}
-              className="border p-2 rounded-md"
-            />
-            <input
-              type="text"
-              name="title"
-              value={facility.title}
-              placeholder="Facility Title"
-              onChange={(e) => handleFacilityChange(e, index)}
-              className="border p-2 rounded-md"
-            />
-          </div>
-        ))}
+          <input
+            type="text"
+            name="icon"
+            value={facility.icon}
+            placeholder="Facility Icon"
+            onChange={(e) => handleAddFacility(e, index)}
+            className="border p-2 rounded-md"
+          />
+          <input
+            type="text"
+            name="title"
+            value={facility.title}
+            placeholder="Facility Title"
+            onChange={(e) => handleAddFacility(e, index)}
+            className="border p-2 rounded-md"
+          />
+        </div> */}
+        {/* ))} */}
         <Button
           variant="secondary"
           onClick={handleAddFacility}
