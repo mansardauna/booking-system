@@ -168,7 +168,6 @@ const login = async (user: User) => {
       
       console.log('Login successful');
       setError(null); 
-      window.location.href = '/';
 
 
       const userData = await response.json();

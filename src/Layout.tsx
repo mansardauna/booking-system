@@ -3,11 +3,14 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 import MobileSidebar from './components/sidebar/MobileSidebar';
 import Sidebar from './components/sidebar/Sidebar';
 import useFetchProducts from './Hooks/useFetchProduct';
+import Login from './pages/Account/SignIn';
 import Nav from './pages/Home/components/Nav/Nav';
 
 function Layout() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { products, loading } = useFetchProducts(); // Use the hook to get products and loading state
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // State to track authentication
 
   const handleToggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -21,7 +24,17 @@ function Layout() {
     }
   }, [isDarkMode]);
 
-  
+  if (!isAuthenticated) {
+    // Render the sign-in page
+    return (
+      <div className='w-full'>
+          <Login onClick={() => setIsAuthenticated(true)} />
+
+          
+      </div>
+    );
+  }
+
   return (
     <div className="flex">
       <div className={`md:w-1/5 shadow-xl border-none border-r z-50 fixed bg-primary ${isDarkMode ? 'sidebar' : ''}`}>

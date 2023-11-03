@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 import useFetchProducts from '../../Hooks/useFetchProduct';
+interface LoginProps{
+  onClick : any
+}
 
-const Login = () => {
+const Login:React.FC<LoginProps> = ({onClick}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string>(''); // Change to a string
@@ -12,7 +15,7 @@ const Login = () => {
 
   const handleLogin = () => {
     const user = { username, password };
-
+    onClick()
     // Clear any previous error
     setError('');
 
