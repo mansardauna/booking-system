@@ -28,6 +28,7 @@ function Layout() {
     // Render the sign-in page
     return (
       <div className='w-full'>
+        
           <Login onClick={() => setIsAuthenticated(true)} />
 
           

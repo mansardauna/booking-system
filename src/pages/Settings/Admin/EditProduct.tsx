@@ -18,8 +18,8 @@ function EditProduct() {
 
   return (
     <div>
-      <div className='w-fit text-3xl font-light m-a m-auto'>Product Management</div>
-      <div className="md:flex">
+      <div className='w-fit text-2xl font-light m-a m-auto'>Product Management</div>
+      <div className="">
         <SelectProduct products={products} onSelectProduct={handleSelectProduct} />
         {selectedProductId && (
           <Authorization

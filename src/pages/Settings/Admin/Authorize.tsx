@@ -49,7 +49,7 @@ const Authorization: React.FC<AuthorizationProps> = ({ product, onUpdateProduct 
   };
 
   return (
-    <div className='md:w-2/3'>
+    <div className=''>
       {isAuthorized ? (
         <div>
           <EditProductForm product={product} onUpdateProduct={onUpdateProduct} />

@@ -18,6 +18,7 @@ interface NewProduct {
   category: string;
   des: string;
   facilities: Facility[];
+  booking:any[];
 }
 
 const AddProductForm: React.FC = () => {
@@ -32,6 +33,7 @@ const AddProductForm: React.FC = () => {
     category: 'Near me',
     des: '',
     facilities: [],
+    booking:[],
   });
 
   const { addProduct } = useFetchProducts(); // Use the addProduct function from the hook
@@ -93,6 +95,8 @@ const AddProductForm: React.FC = () => {
         category: 'Near me',
         des: '',
         facilities: [],
+        booking:[],
+
       });
     } catch (error) {
       console.error('Error adding product:', error);

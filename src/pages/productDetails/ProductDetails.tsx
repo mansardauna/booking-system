@@ -10,6 +10,10 @@ import { ActionTypes, useStoreDispatch } from "../../store/FavoriteContext";
 import PaymentComponent from "../Payments/components/CardPayment";
 import PaymentModal from "../Payments/components/PaymentModal";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import useFetchProducts from "../../Hooks/useFetchProduct";
+import { v4 as uuidv4 } from 'uuid'; 
+
 
 interface InfoProps {
   productInfo: any;
@@ -34,7 +38,8 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
   const [showPaymentComponent, setShowPaymentComponent] = useState(false); // State to control payment component visibility
   const [isBookVisible, setIsBookVisible] = useState(false); // State to control booking details visibility
   const storeDispatch = useStoreDispatch(); // Get the dispatch function from your store
-
+ 
+  const { products } = useFetchProducts()
   const toggleWatchlist = () => {
     setIsInWatchlist(!isInWatchlist);
 
@@ -46,24 +51,58 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
       storeDispatch({ type: ActionTypes.REMOVE_FROM_WATCHLIST, payload: productInfo._id });
     }
   };
-  const handlePaymentComplete = () =>{
-    setShowPaymentComponent(false)
-  storeDispatch({
-      type: ActionTypes.ADD_TO_ORDER_HISTORY,
-      payload: {
-        _id : productInfo._id,
-        username: username,
-        event: event,
-        name: productInfo.name,
-        price: productInfo.price,
-        TotalPrice: calculatedPrice,
-        startDate: selectedStartDate,
-        endDate : selectedEndDate,
-      },
-    });
+  const handlePaymentComplete = async () => {
+    setShowPaymentComponent(false);
+  
+    // Create a booking object
+    const bookingId = uuidv4();
 
+  // Create a booking object
+  const bookingData = {
+    id: bookingId, // Assign the generated ID
+    username,
+    event,
+    startDate: selectedStartDate,
+    endDate: selectedEndDate,
+  };
+    try {
+      // Locate the product by its ID
+      const productId = productInfo.id;
+      const product = products.find((p:any) => p.id === productId);
+  
+      if (product) {
+        // Append the booking data to the product's "booking" array
+        product.booking.push(bookingData);
+        // You may also want to update the server data here if required
+  
+        console.log('Booking added to the product successfully');
+  
+        // If you need to update the server data, make an API call here
+        const response = await axios.put(`http://localhost:3003/api/products/${productId}`, product, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (!response.data) {
+          console.error('No data received in response.');
+          throw new Error('No data received in response');
+        }
+  
+        console.log('Product data updated in the database successfully');
+      } else {
+        console.error('Product not found');
+      }
+    } catch (error) {
+      console.error('Error updating product with booking details:', error);
+      // Handle the error, e.g., display an error message to the user
+    }
+  
+    // ... (other code)
+  };
+  
+  
 
-  }
 
   const handleBookRoom = () => {
     if (selectedStartDate && selectedEndDate) {
@@ -241,7 +280,6 @@ const ProductDetail: React.FC<InfoProps> = ({ productInfo }) => {
           )}
         </div>
         )}
-        <BookedDatesList bookedDates={bookedDates}/>
         <PaymentModal
         productName={productInfo.name}
         calculatedPrice={calculatedPrice}

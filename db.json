@@ -35,6 +35,11 @@
       "username": "Kawthara",
       "password": "1234",
       "id": 6
+    },
+    {
+      "username": "mansur",
+      "password": "nasa",
+      "id": 7
     }
   ],
   "categories": [
@@ -54,7 +59,7 @@
   "products": [
     {
       "id": 1,
-      "name": " Royals",
+      "name": " The Royals",
       "price": "12000",
       "rate": "4.5",
       "images": [
@@ -82,13 +87,28 @@
           "icon": "icon-3",
           "title": "Restaurant"
         }
+      ],
+      "booking": [
+        {
+          "username": "Questy",
+          "event": "party",
+          "startDate": "2023-11-01T00:00:00.000Z",
+          "endDate": "2023-11-30T00:00:00.000Z",
+          "id": 1
+        },
+        {
+          "username": "User",
+          "event": "party",
+          "startDate": "2023-10-31T00:00:00.000Z",
+          "endDate": "2023-12-02T00:00:00.000Z"
+        }
       ]
     },
     {
       "id": 2,
-      "name": "The Rock",
+      "name": "The Rock ",
       "price": 150000,
-      "rate": "6.5",
+      "rate": "6.6",
       "images": [
         "/image/hall4.jpeg",
         "/image/hall5.jpeg"
@@ -112,7 +132,8 @@
           "icon": "icon-6",
           "title": "24/7 Security"
         }
-      ]
+      ],
+      "booking": []
     },
     {
       "id": 3,
@@ -140,6 +161,15 @@
         {
           "icon": "icon-9",
           "title": "Fitness Center"
+        }
+      ],
+      "booking": [
+        {
+          "id": "e930092f-9f11-458e-ba75-a8701674b7de",
+          "username": "User",
+          "event": "party",
+          "startDate": "2023-11-02T00:00:00.000Z",
+          "endDate": "2023-12-02T00:00:00.000Z"
         }
       ]
     },
@@ -170,7 +200,8 @@
           "icon": "icon-12",
           "title": "Laundry Service"
         }
-      ]
+      ],
+      "booking": []
     },
     {
       "id": 5,
@@ -199,7 +230,8 @@
           "icon": "icon-15",
           "title": "Airport Shuttle"
         }
-      ]
+      ],
+      "booking": []
     },
     {
       "id": 6,
@@ -228,7 +260,8 @@
           "icon": "icon-18",
           "title": "Poolside Bar"
         }
-      ]
+      ],
+      "booking": []
     },
     {
       "id": 7,
@@ -257,7 +290,8 @@
           "icon": "icon-18",
           "title": "Poolside Bar"
         }
-      ]
+      ],
+      "booking": []
     },
     {
       "id": 8,
@@ -286,7 +320,8 @@
           "icon": "icon-18",
           "title": "Poolside Bar"
         }
-      ]
+      ],
+      "booking": []
     }
   ]
 }

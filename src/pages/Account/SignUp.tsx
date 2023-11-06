@@ -3,6 +3,7 @@ import axios from 'axios';
 import useFetchProducts from '../../Hooks/useFetchProduct';
 import Button from '../../components/UI/Button';
 import { Link } from 'react-router-dom';
+import { Lock, User } from 'iconsax-react';
 
 const SignUp: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -37,34 +38,40 @@ const SignUp: React.FC = () => {
   }
 
   return (
-    <div className=' mt-5 p-2'>
-    <div className="m-auto w-6/12 border p-2">
-<div className="flex flex-col gap-4 items-center">
+    <div className=' mt-5 p-2 w-fit m-auto border'>
+      <div className="login w-fit m-auto text-3xl text-primary mb-3">Sign up</div>
+    <div className="m-auto p-2">
+<div className="flex flex-col gap-10 items-center">
 <div className="username flex flex-col gap-2">
-  <div className="label text-2xl font-light">Username</div>
-    <input
-      type="text"
-      placeholder="Username"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)} className="p-2 border rounded-md"
-    />
-    </div>
-    <div className="password flex flex-col gap-2">
-  <div className="label">Password</div>
-    <input
-      type="password"
-      placeholder="Password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      className="p-2 border rounded-md"
-    />
-    </div>
-    <Button variant='primary' onClick={handleSignUp} className="w-fit rounded text-white">Sign up</Button>
+    <div className="label text-xl flex w-10/12 m-auto items-center gap-3 border-b border-primary font-light">
+      <User/>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)} className="p-2  rounded-md outline-none w-1/2"
+      />
+      </div>
+
+      </div>
+      <div className="password flex flex-col gap-2">
+    <div className="label border-b w-10/12 m-auto text-xl gap-3 flex items-center border-primary">
+      <Lock/>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="p-2  rounded-md outline-none w-1/2"
+      />
+      </div>
+      </div>
+      <Button variant='primary' onClick={handleSignUp} className="w-10/12 rounded text-white">Sign up</Button>
     <div className="">
     {error && <p className="error">{error}</p>}</div>
-    <div className="signup"> 
-    Already have an Account
-    <Link to='/signin' className=' text-blue-500 font-semibold'> Login</Link></div>
+    <div className="signup font-light"> 
+    Already have an Account?
+    <Link to='/signin' className=' text-primary ml-2'> Login</Link></div>
     </div>
   </div>
   </div>

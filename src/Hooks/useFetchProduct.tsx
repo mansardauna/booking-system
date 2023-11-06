@@ -21,6 +21,7 @@ interface Product {
   rate: string;
   des: string;
   category: string;
+  booking : any[];
 }
 
 interface FetchProductsResult {
@@ -78,21 +79,23 @@ const useFetchProducts = (): FetchProductsResult => {
 
   const filterByLocation = (location: string) => {
     const filtered = products.filter((product) => {
-      const productLocation = product.location; // Assuming the location is a property of the product
-      return productLocation === location;
+      const productLocation = product.location.toLowerCase(); // Convert location to lowercase for case-insensitive matching
+      return productLocation.includes(location.toLowerCase()); // Use includes() for partial matching
     });
     setFilteredProducts(filtered);
   };
+  
 
-  // Function to handle filtering based on facilities
-  const filterByFacilities = (selectedFacilities: string[]) => {
-    const filtered = products.filter((product) => {
-      const productFacilities = product.facilities; 
-      
-      return selectedFacilities.every((facility:any) => productFacilities.includes(facility));
-    });
-    setFilteredProducts(filtered);
-  };
+  // Function to handle filtering based on facilities// ...
+const filterByFacilities = (selectedFacilities: string[]) => {
+  const filtered = products.filter((product) => {
+    const productFacilities = product.facilities.map((facility) => facility.title); // Extract facility titles
+    return selectedFacilities.every((facility) => productFacilities.includes(facility));
+  });
+  setFilteredProducts(filtered);
+};
+// ...
+
 
   const updateProduct = async (productId: number, updatedProductData: any) => {
     try {
