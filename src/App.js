@@ -1,11 +1,17 @@
-import React from 'react';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import React, { useState } from 'react';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  useNavigate, // Import useNavigate hook
+} from 'react-router-dom';
 import './App.css';
 import Layout from './Layout';
 import MapWithLocationTracker from './pages/Account/Location';
 import Profile from './pages/Account/Profile';
 import SignUp from './pages/Account/SignUp';
-import SingIn from './pages/Account/SignIn';
+import SignIn from './pages/Account/SignIn'; // Corrected the component name
 import BookingForm from './pages/Booking/components/BookingForm';
 import PaymentTicket from './pages/Booking/components/PaymentTicket';
 import Favourite from './pages/Favourite/Favourite';
@@ -23,18 +29,22 @@ import { CartProvider, FavProvider, StoreProvider } from './store/FavoriteContex
 import FavouriteList from './pages/Favourite/components/FavouriteList';
 import FavPage from './pages/Favourite/FavPage';
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route
+          index
+          element={
+            <Home />
+          }
+        />
         <Route path="/booking" element={<BookingForm />} />
         <Route path="/product/:_id" element={<Detail />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/hotel" element={<HotelRoom />} />
         <Route path='/store' element={<ProductList/>}/>
-        <Route path="/signin" element={<SingIn />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/Notification" element={<Notification />} />
         <Route path="/user" element={<Profile />} />
         <Route path="/location" element={<MapWithLocationTracker />} />
@@ -50,6 +60,8 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  
+
   return (
     <div>
       <StoreProvider>

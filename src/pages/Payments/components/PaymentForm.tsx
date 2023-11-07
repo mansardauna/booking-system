@@ -1,8 +1,8 @@
-// PaymentComponent.tsx
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { ActionTypes, useStoreDispatch } from "../../../store/FavoriteContext";
+import Button from "../../../components/UI/Button";
 
 const stripePromise = loadStripe("YOUR_PUBLISHABLE_KEY"); // Replace with your Stripe publishable key
 
@@ -43,16 +43,13 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
       }
     }
   };
+  
 
-  const handlePaymentSuccess = (item:any) => {
+  const handlePaymentSuccess = () => {
     setShowPaymentComponent(false);
     setPaymentSuccessful(true);
 
-    // Create a ticket with the booking details
-   
-
-    // Dispatch the action to add the ticket to your store
-    storeDispatch({ type: ActionTypes.ADD_TO_ORDER_HISTORY, payload:item._id });
+    
   };
 
   return (
@@ -85,9 +82,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
               />
             </div>
           </div>
-          <button onClick={handlePaymentSuccess} className="bg-black rounded-lg p-2 shadow-lg float-right">
+          <Button variant="primary" onClick={handlePaymentSuccess} className="bg-black rounded-lg p-2 shadow-lg float-right">
             Pay NGN{calculatedPrice}
-          </button>
+          </Button>
         </form>
       )}
     </div>
@@ -100,9 +97,11 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
 interface PaymentComponentProps {
   productName: string;
   calculatedPrice: number;
+  showPaymentComponent:any;
+  setShowPaymentComponent:any;
 }
 
-const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calculatedPrice }) => {
+const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calculatedPrice, showPaymentComponent, setShowPaymentComponent }) => {
 
 
   return (

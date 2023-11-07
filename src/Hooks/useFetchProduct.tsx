@@ -21,7 +21,7 @@ interface Product {
   rate: string;
   des: string;
   category: string;
-  booking : any[];
+  booking: any[];
 }
 
 interface FetchProductsResult {
@@ -30,8 +30,8 @@ interface FetchProductsResult {
   loading: boolean;
   error: Error | null;
   filterByPrice: (minPrice: number, maxPrice: number) => void;
-  filterByLocation:(location : string) => void;
-  filterByFacilities:(selectedFacilities: string[])=>void;
+  filterByLocation: (location: string) => void;
+  filterByFacilities: (selectedFacilities: string[]) => void;
   updateProduct: (productId: number, updatedProductData: any) => Promise<Product>;
   deleteProduct: (productId: number) => Promise<void>;
   addProduct: (newProduct: Product) => Promise<void>;
@@ -49,17 +49,16 @@ const useFetchProducts = (): FetchProductsResult => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3003/api/products');
-        if (!response.ok) {
-          throw new Error(`HTTP Error! Status: ${response.status}`);
-        }
-        const data = await response.json();
+        const response = await axios.get('http://localhost:3003/api/products'); 
+        const data = response.data;
 
         setProducts(data);
         setFilteredProducts(data);
         setLoading(false);
       } catch (error: any) {
         console.error('Error fetching product data:', error);
+        console.log('Response Data:', error.response?.data);
+        console.log('Status Code:', error.response?.status);
         setError(error);
         setLoading(false);
       }
@@ -68,10 +67,11 @@ const useFetchProducts = (): FetchProductsResult => {
     fetchProducts();
   }, []);
 
+
   // Function to handle filtering based on price range
   const filterByPrice = (minPrice: number, maxPrice: number) => {
     const filtered = products.filter((product) => {
-      const price = product.price; // Assuming the price is a property of the product
+      const price = product.price;
       return price >= minPrice && price <= maxPrice;
     });
     setFilteredProducts(filtered);
@@ -79,23 +79,19 @@ const useFetchProducts = (): FetchProductsResult => {
 
   const filterByLocation = (location: string) => {
     const filtered = products.filter((product) => {
-      const productLocation = product.location.toLowerCase(); // Convert location to lowercase for case-insensitive matching
-      return productLocation.includes(location.toLowerCase()); // Use includes() for partial matching
+      const productLocation = product.location.toLowerCase();
+      return productLocation.includes(location.toLowerCase());
     });
     setFilteredProducts(filtered);
   };
-  
 
-  // Function to handle filtering based on facilities// ...
-const filterByFacilities = (selectedFacilities: string[]) => {
-  const filtered = products.filter((product) => {
-    const productFacilities = product.facilities.map((facility) => facility.title); // Extract facility titles
-    return selectedFacilities.every((facility) => productFacilities.includes(facility));
-  });
-  setFilteredProducts(filtered);
-};
-// ...
-
+  const filterByFacilities = (selectedFacilities: string[]) => {
+    const filtered = products.filter((product) => {
+      const productFacilities = product.facilities.map((facility) => facility.title);
+      return selectedFacilities.every((facility) => productFacilities.includes(facility));
+    });
+    setFilteredProducts(filtered);
+  };
 
   const updateProduct = async (productId: number, updatedProductData: any) => {
     try {
@@ -119,12 +115,11 @@ const filterByFacilities = (selectedFacilities: string[]) => {
 
   const deleteProduct = async (productId: number) => {
     try {
-      const response = await fetch(`http://localhost:3003/api/products/${productId}`, {
-        method: 'DELETE',
-      });
+      const response = await axios.delete(`http://localhost:3003/api/products/${productId}`);
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error! Status: ${response.status}`);
+      if (!response.data) {
+        console.error('No data received in response.');
+        throw new Error('No data received in response');
       }
 
       setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
@@ -136,86 +131,72 @@ const filterByFacilities = (selectedFacilities: string[]) => {
 
   const addProduct = async (newProduct: Product) => {
     try {
-      const response = await fetch('http://localhost:3003/api/products', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:3003/api/products', newProduct, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newProduct),
       });
 
-      if (response.ok) {
-        const addedProduct = await response.json();
-        setProducts((prevProducts) => [...prevProducts, addedProduct]);
-      } else {
-        console.error('Failed to add product:', response.statusText);
-        throw new Error('Failed to add product');
+      if (!response.data) {
+        console.error('No data received in response.');
+        throw new Error('No data received in response');
       }
+
+      setProducts((prevProducts) => [...prevProducts, response.data]);
     } catch (error) {
       console.error('Error adding product:', error);
       throw error;
     }
   };
 
+  const login = async (user: User) => {
+    try {
+      const response = await axios.get('/api/login', {
+        auth: {
+          username: user.username,
+          password: user.password,
+        },
+      });
 
-const login = async (user: User) => {
-  try {
-    const response = await fetch('http://localhost:3003/api/signup', {
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+      if (response.status === 200) {
+        console.log('Login successful');
+        setError(null);
 
-    if (response.status === 200) {
-      
-      console.log('Login successful');
-      setError(null); 
+        const userData = response.data;
+        setUser(userData);
 
-
-      const userData = await response.json();
-      setUser(userData);
-
-      
-      if (userData && userData.accessToken) {
-        
-        window.location.href = '/';
+        if (userData && userData.accessToken) {
+          window.location.href = '/';
+        } else {
+          setError(new Error('Invalid server response. Please try again.'));
+        }
+      } else if (response.status === 401) {
+        setError(new Error('Invalid credentials. Please try again.'));
       } else {
-        setError(new Error('Invalid server response. Please try again.'));
+        setError(new Error('Error logging in. Please try again.'));
       }
-    } else if (response.status === 401) {
-      setError(new Error('Invalid credentials. Please try again.'));
-    } else {
-      // Error handling
-      setError(new Error('Error logging in. Please try again.')); // Set an Error object
+    } catch (error) {
+      setError(new Error('Error logging in. Please try again.'));
+      console.error(error);
+      throw error;
     }
-  } catch (error) {
-    setError(new Error('Error logging in. Please try again.')); 
-    console.error(error);
-    throw error;
-  }
-};
-
-// ...
-
+  };
 
   const fetchUserData = (user: User) => {
-    return fetch('http://localhost:3003/api/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    })
+    return axios
+      .post('/api/userdata', user, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
       .then((response) => {
-        if (!response.ok) {
+        if (!response.data) {
           console.error('Failed to fetch user data:', response.statusText);
           throw new Error('Failed to fetch user data');
         }
-        return response.json();
+        return response.data;
       })
       .then((userData) => {
-        // Set the user data in the state
         setUser(userData);
       })
       .catch((error) => {

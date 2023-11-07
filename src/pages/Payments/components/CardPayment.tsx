@@ -9,6 +9,7 @@ const stripePromise = loadStripe("YOUR_PUBLISHABLE_KEY"); // Replace with your S
 interface PaymentFormProps {
   calculatedPrice: number;
   productName: string;
+  selectedPaymentMethod: any;
 }
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName }) => {
@@ -17,6 +18,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
   const stripe = useStripe();
   const elements = useElements();
   const storeDispatch = useStoreDispatch(); // Get the dispatch function from your store
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -25,24 +27,26 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ calculatedPrice, productName 
       return;
     }
 
-    const cardElement = elements.getElement("cardNumber");
+    if (selectedPaymentMethod === 'stripe') {
+      // Handle Stripe payment
+      const cardElement = elements.getElement("cardNumber");
 
-    if (cardElement) {
-      const { token, error } = await stripe.createToken(cardElement);
+      if (cardElement) {
+        const { token, error } = await stripe.createToken(cardElement);
 
-      if (error) {
-        console.error(error);
-      } else {
-        // Send the token to your server for payment processing
-        // In a real application, you should make a server-side request to charge the card
-
-        // For this example, we'll simply simulate a successful payment
-        setPaymentSuccessful(true);
-
-        // Call the onPaymentSuccess callback
+        if (error) {
+          console.error(error);
+        } else {
+          // Simulate a successful Stripe payment
+          setPaymentSuccessful(true);
+        }
       }
+    } else if (selectedPaymentMethod === 'flutterwave') {
+      // Handle Flutterwave payment
+      // Implement your Flutterwave payment logic here
     }
   };
+
   
 
   const handlePaymentSuccess = (item:any) => {
@@ -102,6 +106,7 @@ interface PaymentComponentProps {
 }
 
 const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calculatedPrice, showPaymentComponent, setShowPaymentComponent }) => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 
 
   return (
@@ -115,10 +120,16 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ productName, calcul
           <div className="">Price :</div>
           <div className="">NGN{calculatedPrice}</div>
         </div>
-        <PaymentForm calculatedPrice={calculatedPrice} 
-        productName={productName} />
-      </div>
+        {selectedPaymentMethod && (
+          <PaymentForm
+            calculatedPrice={calculatedPrice}
+            productName={productName}
+            selectedPaymentMethod={selectedPaymentMethod}
+          />
+        )}
+        </div>
     </Elements>
+    
   );
 };
 

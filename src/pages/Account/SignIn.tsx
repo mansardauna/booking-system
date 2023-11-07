@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 import useFetchProducts from '../../Hooks/useFetchProduct';
 interface LoginProps{
-  onClick : any
+  onClick : any;
 }
 
 const Login:React.FC<LoginProps> = ({onClick}) => {
@@ -16,16 +16,15 @@ const Login:React.FC<LoginProps> = ({onClick}) => {
 
   const handleLogin = () => {
     const user = { username, password };
-    onClick()
-
     setError('');
-
+    onClick()
+    
     login(user)
       .then(() => {
       })
       .catch((error: Error) => {
-        // Handle login errors and update the error state
-        setError(error.message); // Set the error message received from the API
+        
+        setError(error.message); 
       });
   };
 

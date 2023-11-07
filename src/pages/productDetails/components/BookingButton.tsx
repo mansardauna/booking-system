@@ -13,4 +13,4 @@ export const BookingButton: React.FC<{
       </button>
     </div>
   );
-};
+}

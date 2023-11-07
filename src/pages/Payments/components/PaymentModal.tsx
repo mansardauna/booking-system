@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import Button from "../../../components/UI/Button";
 import PaymentComponent from "./CardPayment";
+import FlutterwavePayment from "./Flatterwave";
 
 const PaymentModal: React.FC<{
   isOpen: boolean;
@@ -19,6 +20,7 @@ const PaymentModal: React.FC<{
       className="md:w-2/6 right-4 z-50 bottom-40 md:right-80 absolute gap-3 bg-primary text-white p-4 rounded-md shadow-md flex flex-col"
     >
       <div className="w-fit m-auto mt-0 uppercase text-2xl font-light">Complete Your Booking</div>
+      <FlutterwavePayment amount={calculatedPrice} onCancel={onRequestClose} onSuccess={onRequestClose} />
       <PaymentComponent
         productName={productName}
         calculatedPrice={calculatedPrice}

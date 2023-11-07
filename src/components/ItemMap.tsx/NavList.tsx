@@ -1,4 +1,4 @@
-import { Bank, Edit, Home, Information, Location, Notification, ReceiptEdit, Setting, Star, User } from 'iconsax-react'
+import { Bank, Edit, Home, Information, Location, Menu, Notification, ReceiptEdit, Setting, Star, User } from 'iconsax-react'
 import React from 'react'
 
 export const NavList = [
@@ -40,5 +40,26 @@ export const Rate=[
     title:"About us",
     icon:<Information size="16"/>,
     link:'/about'
+  }
+]
+
+export const AdminNavList = [
+  {
+    id:1,
+    title:"Home",
+    icon: <Home size={17}/>,
+    link: '/'
+  },
+    {
+      id:2,
+      title:"Event Centers",
+      icon: <Bank size={17} />,
+      link: '/store'
+    },
+  {
+    id:3,
+    title:"Admin Dashboard",
+    icon: <Menu size={17}/>,
+    link: '/admin'
   }
 ]

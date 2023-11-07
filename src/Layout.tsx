@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration, Link, useNavigate } from 'react-router-dom';
+import AdminSidebar from './components/sidebar/AdminSidebar';
 import MobileSidebar from './components/sidebar/MobileSidebar';
 import Sidebar from './components/sidebar/Sidebar';
 import useFetchProducts from './Hooks/useFetchProduct';
@@ -11,6 +12,9 @@ function Layout() {
   const { products, loading } = useFetchProducts(); // Use the hook to get products and loading state
 
   const [isAuthenticated, setIsAuthenticated] = useState(false); // State to track authentication
+  const [isAdmin, setIsAdmin] = useState(false); // State to track if the user is an admin
+
+  const navigate = useNavigate();
 
   const handleToggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -24,29 +28,27 @@ function Layout() {
     }
   }, [isDarkMode]);
 
-  if (!isAuthenticated) {
-    // Render the sign-in page
-    return (
-      <div className='w-full'>
-        
-          <Login onClick={() => setIsAuthenticated(true)} />
-
-          
-      </div>
-    );
-  }
+  const handleLogin = (user:any) => {
+    setIsAuthenticated(!isAuthenticated)
+    
+  };
 
   return (
     <div className="flex">
+      {isAuthenticated && (
+        <div className={`md:w-1/5 shadow-xl border-none border-r z-50 fixed bg-primary ${isDarkMode ? 'sidebar' : ''}`}>
+          <Sidebar toggleDarkMode={handleToggleDarkMode} products={products} />
+          <MobileSidebar isDarkMode={isDarkMode} toggleDarkMode={handleToggleDarkMode} />
+        </div>
+      )}
       <div className={`md:w-1/5 shadow-xl border-none border-r z-50 fixed bg-primary ${isDarkMode ? 'sidebar' : ''}`}>
-        <Sidebar toggleDarkMode={handleToggleDarkMode} products={products} />
-        <MobileSidebar isDarkMode={isDarkMode} toggleDarkMode={handleToggleDarkMode} />
-      </div>
+       <AdminSidebar toggleDarkMode={handleToggleDarkMode} products={products} />
+       </div>
       <Nav isDark={isDarkMode} products={products} />
 
-      <div className={`md:ml-[20%] md:mt-[5%] pb-10 mt-[32%] w-full block ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div className="md:ml-[20%] md:mt-[5%] pb-10 mt-[32%] w-full block">
         <ScrollRestoration />
-        <Outlet />
+        {isAuthenticated ? <Outlet /> : <Login onClick={handleLogin} />}
       </div>
     </div>
   );
