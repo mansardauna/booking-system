@@ -1,0 +1,63 @@
+
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+background: var(--background-light);
+color: var(--text-light);
+}
+
+:root {
+  --background-light: #fff;
+  --text-light: #333;
+  --background-dark: #0d132d;
+  --text-dark: #fff;
+  --sidebar-dark: #0d132d;
+}
+ 
+/* Dark mode styles */
+.dark-mode {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+.sidebar{
+  background: var(--sidebar-dark);
+  border-right: 1px solid rgb(68, 67, 67);
+
+}
+.nav{
+  border-bottom: 1px solid rgb(68, 67, 67);
+  background: var(--background-dark);
+
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.logo{
+  font-family: 'Dancing Script', cursive;
+}
+input, select, textarea{
+  background: transparent;
+}
+
+
+
+
+.slick-slide {
+  transition: transform 0.3s ease;
+}
+
+/* Active slide item */
+
+
+
+/* Add more styles as needed */
